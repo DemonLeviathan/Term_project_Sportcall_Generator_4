@@ -1,0 +1,12 @@
+D:\Univer\7-th term\TermProject\Generator.API\Generator.Domain\bin\Debug\net8.0\Generator.Domain.deps.json
+D:\Univer\7-th term\TermProject\Generator.API\Generator.Domain\bin\Debug\net8.0\Generator.Domain.dll
+D:\Univer\7-th term\TermProject\Generator.API\Generator.Domain\bin\Debug\net8.0\Generator.Domain.pdb
+D:\Univer\7-th term\TermProject\Generator.API\Generator.Domain\obj\Debug\net8.0\Generator.Domain.csproj.AssemblyReference.cache
+D:\Univer\7-th term\TermProject\Generator.API\Generator.Domain\obj\Debug\net8.0\Generator.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\Univer\7-th term\TermProject\Generator.API\Generator.Domain\obj\Debug\net8.0\Generator.Domain.AssemblyInfoInputs.cache
+D:\Univer\7-th term\TermProject\Generator.API\Generator.Domain\obj\Debug\net8.0\Generator.Domain.AssemblyInfo.cs
+D:\Univer\7-th term\TermProject\Generator.API\Generator.Domain\obj\Debug\net8.0\Generator.Domain.csproj.CoreCompileInputs.cache
+D:\Univer\7-th term\TermProject\Generator.API\Generator.Domain\obj\Debug\net8.0\Generator.Domain.dll
+D:\Univer\7-th term\TermProject\Generator.API\Generator.Domain\obj\Debug\net8.0\refint\Generator.Domain.dll
+D:\Univer\7-th term\TermProject\Generator.API\Generator.Domain\obj\Debug\net8.0\Generator.Domain.pdb
+D:\Univer\7-th term\TermProject\Generator.API\Generator.Domain\obj\Debug\net8.0\ref\Generator.Domain.dll

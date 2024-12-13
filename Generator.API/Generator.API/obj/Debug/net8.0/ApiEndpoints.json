@@ -1,0 +1,66 @@
+[
+  {
+    "ContainingType": "Generator.API.Controllers.ActivityController",
+    "Method": "AddActivity",
+    "RelativePath": "api/Activity",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "activityDto",
+        "Type": "Generator.API.DTO.ActivityDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Generator.API.Controllers.ActivityController",
+    "Method": "GetActivityById",
+    "RelativePath": "api/Activity/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Generator.API.Controllers.UserDataController",
+    "Method": "AddUserData",
+    "RelativePath": "api/UserData",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userDataDto",
+        "Type": "Generator.API.DTO.UserDataDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Generator.API.Controllers.UserDataController",
+    "Method": "GetUserData",
+    "RelativePath": "api/UserData/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

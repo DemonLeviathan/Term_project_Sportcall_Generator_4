@@ -1,0 +1,17 @@
+D:\Univer\7-th term\TermProject\Generator.API\Generator.Infrastructure\bin\Debug\net8.0\Generator.Infrastructure.deps.json
+D:\Univer\7-th term\TermProject\Generator.API\Generator.Infrastructure\bin\Debug\net8.0\Generator.Infrastructure.runtimeconfig.json
+D:\Univer\7-th term\TermProject\Generator.API\Generator.Infrastructure\bin\Debug\net8.0\Generator.Infrastructure.dll
+D:\Univer\7-th term\TermProject\Generator.API\Generator.Infrastructure\bin\Debug\net8.0\Generator.Infrastructure.pdb
+D:\Univer\7-th term\TermProject\Generator.API\Generator.Infrastructure\bin\Debug\net8.0\Generator.Domain.dll
+D:\Univer\7-th term\TermProject\Generator.API\Generator.Infrastructure\bin\Debug\net8.0\Generator.Domain.pdb
+D:\Univer\7-th term\TermProject\Generator.API\Generator.Infrastructure\obj\Debug\net8.0\Generator.Infrastructure.csproj.AssemblyReference.cache
+D:\Univer\7-th term\TermProject\Generator.API\Generator.Infrastructure\obj\Debug\net8.0\Generator.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+D:\Univer\7-th term\TermProject\Generator.API\Generator.Infrastructure\obj\Debug\net8.0\Generator.Infrastructure.AssemblyInfoInputs.cache
+D:\Univer\7-th term\TermProject\Generator.API\Generator.Infrastructure\obj\Debug\net8.0\Generator.Infrastructure.AssemblyInfo.cs
+D:\Univer\7-th term\TermProject\Generator.API\Generator.Infrastructure\obj\Debug\net8.0\Generator.Infrastructure.csproj.CoreCompileInputs.cache
+D:\Univer\7-th term\TermProject\Generator.API\Generator.Infrastructure\obj\Debug\net8.0\Generato.C917D432.Up2Date
+D:\Univer\7-th term\TermProject\Generator.API\Generator.Infrastructure\obj\Debug\net8.0\Generator.Infrastructure.dll
+D:\Univer\7-th term\TermProject\Generator.API\Generator.Infrastructure\obj\Debug\net8.0\refint\Generator.Infrastructure.dll
+D:\Univer\7-th term\TermProject\Generator.API\Generator.Infrastructure\obj\Debug\net8.0\Generator.Infrastructure.pdb
+D:\Univer\7-th term\TermProject\Generator.API\Generator.Infrastructure\obj\Debug\net8.0\Generator.Infrastructure.genruntimeconfig.cache
+D:\Univer\7-th term\TermProject\Generator.API\Generator.Infrastructure\obj\Debug\net8.0\ref\Generator.Infrastructure.dll

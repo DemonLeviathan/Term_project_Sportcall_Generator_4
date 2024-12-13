@@ -1,0 +1,17 @@
+D:\Univer\7-th term\TermProject\Generator.API\Generator.Application\bin\Debug\net8.0\Generator.Application.deps.json
+D:\Univer\7-th term\TermProject\Generator.API\Generator.Application\bin\Debug\net8.0\Generator.Application.dll
+D:\Univer\7-th term\TermProject\Generator.API\Generator.Application\bin\Debug\net8.0\Generator.Application.pdb
+D:\Univer\7-th term\TermProject\Generator.API\Generator.Application\bin\Debug\net8.0\Generator.Domain.dll
+D:\Univer\7-th term\TermProject\Generator.API\Generator.Application\bin\Debug\net8.0\Generator.Infrastructure.dll
+D:\Univer\7-th term\TermProject\Generator.API\Generator.Application\bin\Debug\net8.0\Generator.Infrastructure.pdb
+D:\Univer\7-th term\TermProject\Generator.API\Generator.Application\bin\Debug\net8.0\Generator.Domain.pdb
+D:\Univer\7-th term\TermProject\Generator.API\Generator.Application\obj\Debug\net8.0\Generator.Application.csproj.AssemblyReference.cache
+D:\Univer\7-th term\TermProject\Generator.API\Generator.Application\obj\Debug\net8.0\Generator.Application.GeneratedMSBuildEditorConfig.editorconfig
+D:\Univer\7-th term\TermProject\Generator.API\Generator.Application\obj\Debug\net8.0\Generator.Application.AssemblyInfoInputs.cache
+D:\Univer\7-th term\TermProject\Generator.API\Generator.Application\obj\Debug\net8.0\Generator.Application.AssemblyInfo.cs
+D:\Univer\7-th term\TermProject\Generator.API\Generator.Application\obj\Debug\net8.0\Generator.Application.csproj.CoreCompileInputs.cache
+D:\Univer\7-th term\TermProject\Generator.API\Generator.Application\obj\Debug\net8.0\Generato.522D3BCC.Up2Date
+D:\Univer\7-th term\TermProject\Generator.API\Generator.Application\obj\Debug\net8.0\Generator.Application.dll
+D:\Univer\7-th term\TermProject\Generator.API\Generator.Application\obj\Debug\net8.0\refint\Generator.Application.dll
+D:\Univer\7-th term\TermProject\Generator.API\Generator.Application\obj\Debug\net8.0\Generator.Application.pdb
+D:\Univer\7-th term\TermProject\Generator.API\Generator.Application\obj\Debug\net8.0\ref\Generator.Application.dll
