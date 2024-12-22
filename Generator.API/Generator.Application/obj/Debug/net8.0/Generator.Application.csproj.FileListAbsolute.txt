@@ -15,3 +15,4 @@ D:\Univer\7-th term\TermProject\Generator.API\Generator.Application\obj\Debug\ne
 D:\Univer\7-th term\TermProject\Generator.API\Generator.Application\obj\Debug\net8.0\refint\Generator.Application.dll
 D:\Univer\7-th term\TermProject\Generator.API\Generator.Application\obj\Debug\net8.0\Generator.Application.pdb
 D:\Univer\7-th term\TermProject\Generator.API\Generator.Application\obj\Debug\net8.0\ref\Generator.Application.dll
+D:\Univer\7-th term\TermProject\Generator.API\Generator.Application\obj\Debug\net8.0\Generator.Application.sourcelink.json

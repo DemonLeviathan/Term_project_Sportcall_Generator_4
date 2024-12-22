@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Generator.Domain;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +9,7 @@ namespace Generator.Infrastructure.Interfaces;
 
 public interface IUsersRepository
 {
-
+    void Add(Users user);
+    Users GetByUsername(string username);
+    bool UserExists(string username);
 }

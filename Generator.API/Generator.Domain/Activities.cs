@@ -1,4 +1,6 @@
-﻿namespace Generator.Domain;
+﻿using System.Text.Json.Serialization;
+
+namespace Generator.Domain;
 
 public class Activities
 {
@@ -6,5 +8,6 @@ public class Activities
     public string activity_name { get; set; }
     public string activity_type { get; set; }
 
+    [JsonIgnore]
     public ICollection<UserData> UserData { get; set; }
 }

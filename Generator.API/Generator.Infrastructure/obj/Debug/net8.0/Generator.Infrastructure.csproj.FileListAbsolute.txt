@@ -15,3 +15,4 @@ D:\Univer\7-th term\TermProject\Generator.API\Generator.Infrastructure\obj\Debug
 D:\Univer\7-th term\TermProject\Generator.API\Generator.Infrastructure\obj\Debug\net8.0\Generator.Infrastructure.pdb
 D:\Univer\7-th term\TermProject\Generator.API\Generator.Infrastructure\obj\Debug\net8.0\Generator.Infrastructure.genruntimeconfig.cache
 D:\Univer\7-th term\TermProject\Generator.API\Generator.Infrastructure\obj\Debug\net8.0\ref\Generator.Infrastructure.dll
+D:\Univer\7-th term\TermProject\Generator.API\Generator.Infrastructure\obj\Debug\net8.0\Generator.Infrastructure.sourcelink.json

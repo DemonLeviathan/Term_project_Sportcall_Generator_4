@@ -7,7 +7,7 @@ public class UserProfile : Profile
 {
     public UserProfile()
     {
-        CreateMap<Domain.Users, UserDto>();
-        CreateMap<UserDto, Domain.Users>();
+        CreateMap<Domain.Users, LoginDto>();
+        CreateMap<LoginDto, Domain.Users>();
     }
 }

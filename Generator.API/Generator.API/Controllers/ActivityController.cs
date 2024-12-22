@@ -1,6 +1,7 @@
 ﻿using Generator.API.DTO;
 using Generator.Application.Interfaces;
 using Generator.Domain;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Generator.API.Controllers
@@ -17,7 +18,7 @@ namespace Generator.API.Controllers
 
 
         // add activity admin
-
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public IActionResult AddActivity([FromBody] ActivityDto activityDto)
         {
@@ -51,6 +52,7 @@ namespace Generator.API.Controllers
 
 
         //delete activity admin
+        [Authorize(Roles = "Admin")]
         [HttpDelete("{id}")]
         public IActionResult DeleteActivity(int id)
         {

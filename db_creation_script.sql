@@ -2,7 +2,8 @@ create table Users(
 	user_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
 	username VARCHAR(30) NOT NULL,
 	password_hash VARCHAR(300) NOT NULL,
-	birthday DATE NOT NULL
+	birthday DATE NOT NULL,
+	user_role VARCHAR(15) CHECK (user_role IN ('User', 'Admin'))  DEFAULT 'User' 
 );
 drop table Users
 
@@ -11,6 +12,7 @@ create table Activities(
 	activity_name VARCHAR(35) NOT NULL,
 	activity_type VARCHAR(35) NOT NULL  
 );
+drop table Activities
 
 create table User_data( 
 	data_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,

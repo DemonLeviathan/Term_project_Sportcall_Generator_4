@@ -10,3 +10,4 @@ D:\Univer\7-th term\TermProject\Generator.API\Generator.Domain\obj\Debug\net8.0\
 D:\Univer\7-th term\TermProject\Generator.API\Generator.Domain\obj\Debug\net8.0\refint\Generator.Domain.dll
 D:\Univer\7-th term\TermProject\Generator.API\Generator.Domain\obj\Debug\net8.0\Generator.Domain.pdb
 D:\Univer\7-th term\TermProject\Generator.API\Generator.Domain\obj\Debug\net8.0\ref\Generator.Domain.dll
+D:\Univer\7-th term\TermProject\Generator.API\Generator.Domain\obj\Debug\net8.0\Generator.Domain.sourcelink.json

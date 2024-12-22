@@ -1,4 +1,6 @@
-﻿namespace Generator.Domain;
+﻿using System.Text.Json.Serialization;
+
+namespace Generator.Domain;
 
 public class Users
 {
@@ -6,10 +8,17 @@ public class Users
     public string username { get; set; }
     public string password { get; set; }
     public string birthday { get; set; }
+    public string user_role { get; set; } = "User";
 
+    [JsonIgnore]
     public ICollection<UserData> UserData { get; set; }
-    public ICollection<Friendship> Friendships1 { get; set; } 
-    public ICollection<Friendship> Friendships2 { get; set; } 
 
+    [JsonIgnore]
+    public ICollection<Friendship> Friendships1 { get; set; }
+
+    [JsonIgnore]
+    public ICollection<Friendship> Friendships2 { get; set; }
+
+    [JsonIgnore]
     public ICollection<Calls> Calls { get; set; }
 }

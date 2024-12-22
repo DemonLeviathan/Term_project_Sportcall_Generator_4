@@ -65,5 +65,10 @@ public class ApplicationDbContext : DbContext
         modelBuilder.Entity<Friendship>()
             .HasIndex(f => new { f.user1_id, f.user2_id })
             .IsUnique();
+
+        modelBuilder.Entity<UserData>()
+            .Property(ud => ud.date_info)
+            .HasColumnType("date")
+            .HasDefaultValueSql("CURRENT_DATE");
     }
 }

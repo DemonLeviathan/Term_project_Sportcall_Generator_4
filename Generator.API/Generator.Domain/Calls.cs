@@ -1,4 +1,6 @@
 ﻿
+using System.Text.Json.Serialization;
+
 namespace Generator.Domain
 {
     public class Calls
@@ -9,6 +11,7 @@ namespace Generator.Domain
         public string call_date {  get; set; }
         public string status { get; set; }
 
+        [JsonIgnore]
         public Friendship Friendship { get; set; }
     }
 }

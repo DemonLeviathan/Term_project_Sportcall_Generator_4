@@ -1,8 +1,11 @@
 ﻿using Generator.API.DTO;
 using Generator.Domain;
 using Generator.Infrastructure;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 
 namespace Generator.API.Controllers
 {
@@ -17,7 +20,6 @@ namespace Generator.API.Controllers
             _context = context;
         }
 
-        // Получить данные пользователя по id
         [HttpGet("{id}")]
         public async Task<IActionResult> GetUserData(int id)
         {
@@ -32,35 +34,63 @@ namespace Generator.API.Controllers
         }
 
         // add user data
+        [Authorize(Policy = "UserPolicy")]
         [HttpPost]
         public async Task<IActionResult> AddUserData([FromBody] UserDataDto userDataDto)
         {
             if (userDataDto == null)
                 return BadRequest("User data cannot be null.");
 
-            // Поиск activity_id по имени
+            if (User == null || !User.Identity.IsAuthenticated)
+            {
+                return Unauthorized("User бляяяяяяяяяяя is not authorized.");
+            }
+
+            var token = Request.Headers["Authorization"].ToString();
+            Console.WriteLine(token); 
+            
+                Console.WriteLine(User.Identity.Name);
+
+            foreach (var claim in User.Claims)
+            {
+                Console.WriteLine($"Claim Type: {claim.Type}, Claim Value: {claim.Value}");
+            }
+
+
+            // TODO: FIND FIELD WITH KEY "SUB" AND TAKE USERNAME
+            var userNameClaim = User.Claims.FirstOrDefault(); 
+
+            if (userNameClaim == null)
+                { return Unauthorized("User is not authorized."); }
+
+            string userName = userNameClaim.Value;
+            Console.WriteLine($"UserName from JWT: {userName}");
+
+            var user = await _context.Users
+                .FirstOrDefaultAsync(u => u.username == userName); 
+
+            if (user == null)
+                return BadRequest($"User with name '{userName}' not found.");
+
             var activity = await _context.Activities
                 .FirstOrDefaultAsync(a => a.activity_name == userDataDto.activity_name);
 
             if (activity == null)
                 return BadRequest($"Activity with name '{userDataDto.activity_name}' not found.");
 
-            // Преобразование DTO в сущность
             var userData = new UserData
             {
-                user_id = userDataDto.user_id,
-                activity_id = activity.activity_id, // Используем найденный ID
+                user_id = user.user_id, 
+                activity_id = activity.activity_id,
                 weight = userDataDto.weight,
                 height = userDataDto.height
             };
 
             try
             {
-                // Сохранение в базу данных
                 _context.UserData.Add(userData);
                 await _context.SaveChangesAsync();
 
-                // Возврат результата
                 return CreatedAtAction(nameof(GetUserData), new { id = userData.data_id }, userData);
             }
             catch (Exception ex)
@@ -68,6 +98,7 @@ namespace Generator.API.Controllers
                 return StatusCode(500, $"Internal server error: {ex.Message}");
             }
         }
+
 
 
         // update user data
