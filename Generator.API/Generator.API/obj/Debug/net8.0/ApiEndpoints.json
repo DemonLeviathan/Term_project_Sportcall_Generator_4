@@ -90,6 +90,95 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "Generator.API.Controllers.ActivityController",
+    "Method": "GetAllActivities",
+    "RelativePath": "api/Activity/activities",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "page",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "pageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Generator.API.Controllers.ActivityController",
+    "Method": "GetActivitiesByType",
+    "RelativePath": "api/Activity/by-type",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "activityType",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Generator.API.Controllers.ActivityController",
+    "Method": "GetOverallStatistics",
+    "RelativePath": "api/Activity/statistics",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Generator.API.Controllers.ActivityController",
+    "Method": "GetUserStatistics",
+    "RelativePath": "api/Activity/statistics/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Generator.API.Controllers.ActivityController",
+    "Method": "GetAllActivityTypes",
+    "RelativePath": "api/Activity/types",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Generator.API.Controllers.ActivityController",
+    "Method": "GetAllUsers",
+    "RelativePath": "api/Activity/users",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "searchTerm",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Generator.API.Controllers.FriendshipController",
     "Method": "GetFriendshipById",
     "RelativePath": "api/Friendship/{id}",
@@ -138,6 +227,127 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "Generator.API.Controllers.FriendshipController",
+    "Method": "GetFriends",
+    "RelativePath": "api/Friendship/list",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Generator.API.Controllers.FriendshipController",
+    "Method": "GetNotifications",
+    "RelativePath": "api/Friendship/notifications",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Generator.API.Controllers.FriendshipController",
+    "Method": "RespondToFriendRequest",
+    "RelativePath": "api/Friendship/respond",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "Generator.API.DTO.FriendshipDto",
+        "IsRequired": true
+      },
+      {
+        "Name": "accept",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Generator.API.Controllers.UserController",
+    "Method": "GetUserId",
+    "RelativePath": "api/User/get-id",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "username",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Generator.API.Controllers.UserController",
+    "Method": "GetOverallStatistics",
+    "RelativePath": "api/User/statistics",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Generator.API.Controllers.UserController",
+    "Method": "GetUserStatistics",
+    "RelativePath": "api/User/statistics/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Generator.API.Controllers.UserController",
+    "Method": "GetAllUsers",
+    "RelativePath": "api/User/users",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "searchTerm",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "page",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "pageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Generator.API.Controllers.UserDataController",
     "Method": "AddUserData",
     "RelativePath": "api/UserData",
@@ -165,6 +375,32 @@
         "Name": "id",
         "Type": "System.Int32",
         "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Generator.API.Controllers.UserDataController",
+    "Method": "GetAllUserData",
+    "RelativePath": "api/UserData/all",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "username",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "page",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "size",
+        "Type": "System.Int32",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []

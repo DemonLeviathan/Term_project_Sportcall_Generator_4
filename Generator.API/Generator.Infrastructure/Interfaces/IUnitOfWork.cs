@@ -8,5 +8,6 @@ public interface IUnitOfWork : IDisposable
     IFriendshipRepository Friendship { get; }
     ICallRepository Calls { get; }
     void Commit();
+    Task CommitAsync();
     void Rollback();
 }

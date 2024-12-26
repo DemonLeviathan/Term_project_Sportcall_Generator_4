@@ -28,7 +28,10 @@ public class UnitOfWork : IUnitOfWork
     {
         _context.SaveChanges();
     }
-
+    public async Task CommitAsync()
+    {
+        await _context.SaveChangesAsync();
+    }
     public void Dispose()
     {
         _context.Dispose();

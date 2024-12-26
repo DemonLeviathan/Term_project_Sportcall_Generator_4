@@ -1,6 +1,7 @@
 ﻿using Generator.API.DTO;
 using Generator.Application.Interfaces;
 using Generator.Domain;
+using Generator.Infrastructure.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,9 +12,11 @@ namespace Generator.API.Controllers
     public class ActivityController : Controller
     {
         private readonly IActivityService _activityService;
-        public ActivityController(IActivityService activityService)
+        private readonly IUnitOfWork _unitOfWork;
+        public ActivityController(IActivityService activityService, IUnitOfWork unitOfWork)
         {
             _activityService = activityService;
+            _unitOfWork = unitOfWork;
         }
 
 
@@ -66,6 +69,104 @@ namespace Generator.API.Controllers
             return NoContent();
         }
 
+        [Authorize(Roles = "Admin")]
+        [HttpGet("users")]
+        public IActionResult GetAllUsers([FromQuery] string? searchTerm)
+        {
+            var users = _unitOfWork.Users.GetAll();
 
+            if (!string.IsNullOrEmpty(searchTerm))
+            {
+                users = users.Where(u => u.username.Contains(searchTerm, StringComparison.OrdinalIgnoreCase)).ToList();
+            }
+
+            return Ok(users);
+        }
+
+        [Authorize(Roles = "Admin")]
+        [HttpGet("statistics")]
+        public IActionResult GetOverallStatistics()
+        {
+            var statistics = _unitOfWork.Users.GetAll()
+                .Select(u => new
+                {
+                    u.username,
+                    ActivitiesCount = u.UserData.Count,
+                    FriendsCount = u.Friendships1.Count + u.Friendships2.Count
+                });
+
+            return Ok(statistics);
+        }
+
+        [Authorize(Roles = "Admin")]
+        [HttpGet("statistics/{id}")]
+        public IActionResult GetUserStatistics(int id)
+        {
+            var user = _unitOfWork.Users.GetById(id);
+            if (user == null)
+            {
+                return NotFound($"User with ID {id} not found.");
+            }
+
+            var statistics = new
+            {
+                user.username,
+                ActivitiesCount = user.UserData.Count,
+                FriendsCount = user.Friendships1.Count + user.Friendships2.Count
+            };
+
+            return Ok(statistics);
+        }
+
+        [Authorize(Roles = "Admin")]
+        [HttpGet("activities")]
+        public IActionResult GetAllActivities([FromQuery] int page = 1, [FromQuery] int pageSize = 10)
+        {
+            var activities = _activityService.GetAllActivities();
+            var paginatedActivities = activities
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .ToList();
+
+            var totalPages = (int)Math.Ceiling((double)activities.Count() / pageSize);
+
+            return Ok(new
+            {
+                activities = paginatedActivities,
+                totalPages = totalPages
+            });
+        }
+
+
+        [HttpGet("types")]
+        public IActionResult GetAllActivityTypes()
+        {
+            var activityTypes = _activityService.GetAllActivities()
+                .Select(a => a.activity_type)
+                .Distinct()
+                .ToList();
+
+            return Ok(activityTypes);
+        }
+
+        [HttpGet("by-type")]
+        public IActionResult GetActivitiesByType([FromQuery] string activityType)
+        {
+            if (string.IsNullOrWhiteSpace(activityType))
+            {
+                return BadRequest("Activity type is required.");
+            }
+
+            var activities = _activityService.GetAllActivities()
+                .Where(a => a.activity_type.Equals(activityType, StringComparison.OrdinalIgnoreCase))
+                .ToList();
+
+            if (!activities.Any())
+            {
+                return NotFound($"No activities found for type '{activityType}'.");
+            }
+
+            return Ok(activities);
+        }
     }
 }

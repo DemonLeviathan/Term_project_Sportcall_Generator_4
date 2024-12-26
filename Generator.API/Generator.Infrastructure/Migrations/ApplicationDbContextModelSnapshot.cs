@@ -62,6 +62,10 @@ namespace Generator.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<string>("description")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<int>("friend_id")
                         .HasColumnType("integer");
 
@@ -85,6 +89,9 @@ namespace Generator.Infrastructure.Migrations
                         .HasColumnType("integer");
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("friend_id"));
+
+                    b.Property<bool>("IsPending")
+                        .HasColumnType("boolean");
 
                     b.Property<string>("friendship_date")
                         .IsRequired()

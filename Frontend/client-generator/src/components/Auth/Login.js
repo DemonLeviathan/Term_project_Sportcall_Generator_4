@@ -1,63 +1,116 @@
-// src/components/Auth/Login.js
 import React, { useState, useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import authService from '../../services/authService';
 import { AuthContext } from '../../context/AuthContext';
+import {
+  TextField,
+  Button,
+  Container,
+  Typography,
+  Box,
+  Alert,
+} from '@mui/material';
+import jwt_decode from 'jwt-decode';
 
 function Login() {
-  const [form, setForm] = useState({ email: '', password: '' });
-  const [error, setError] = useState('');
-  const { setAuthData, user } = useContext(AuthContext);
+  const { setAuthData } = useContext(AuthContext);
   const navigate = useNavigate();
+  const [form, setForm] = useState({ username: '', password: '' });
+  const [error, setError] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleChange = e => setForm({ ...form, [e.target.name]: e.target.value });
-
-  const handleSubmit = async e => {
-    e.preventDefault();
-    setError('');
-    try {
-      const token = await authService.login(form);
-      setAuthData(token);
-      // Навигация будет осуществляться через useEffect в AuthContext или другим способом
-      if (user?.role === 'admin') {
-        navigate('/admin');
-      } else {
-        navigate('/user');
-      }
-    } catch (err) {
-      console.error('Ошибка авторизации:', err);
-      setError(err.response?.data?.message || 'Произошла ошибка');
-    }
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
   };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError('');
+    setIsSubmitting(true);
+  
+    try {
+      const response = await authService.login(form);
+      const token = response.data?.token;
+  
+      if (!token) {
+        throw new Error('Токен отсутствует в ответе сервера');
+      }
+  
+      const decodedUser = jwt_decode(token);
+      const role = decodedUser['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'];
+  
+      if (!role) {
+        throw new Error('Роль отсутствует в токене');
+      }
+  
+      setAuthData({ token, user: { ...decodedUser, role } });
+      navigate(role === 'Admin' ? '/admin' : '/user');
+    } catch (err) {
+      console.error('Ошибка авторизации:', err);
+      setError(err.message || 'Произошла ошибка');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+  
+  
+
   return (
-    <div>
-      <h2>Авторизация</h2>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Email:</label>
-          <input
-            type="email"
-            name="email"
-            value={form.email}
+    <Container maxWidth="sm">
+      <Box
+        sx={{
+          mt: 8,
+          p: 4,
+          border: '1px solid #ccc',
+          borderRadius: '8px',
+          boxShadow: 3,
+          backgroundColor: '#fafafa',
+        }}
+      >
+        <Typography variant="h4" component="h1" gutterBottom align="center">
+          Авторизация
+        </Typography>
+        {error && (
+          <Alert severity="error" sx={{ mb: 2 }}>
+            {error}
+          </Alert>
+        )}
+        <form onSubmit={handleSubmit}>
+          <TextField
+            fullWidth
+            label="Имя пользователя"
+            name="username"
+            value={form.username}
             onChange={handleChange}
+            margin="normal"
             required
           />
-        </div>
-        <div>
-          <label>Пароль:</label>
-          <input
-            type="password"
+          <TextField
+            fullWidth
+            label="Пароль"
             name="password"
+            type="password"
             value={form.password}
             onChange={handleChange}
+            margin="normal"
             required
           />
-        </div>
-        <button type="submit">Войти</button>
-      </form>
-    </div>
+          <Button
+            variant="contained"
+            color="primary"
+            type="submit"
+            fullWidth
+            disabled={isSubmitting}
+            sx={{ mt: 2 }}
+          >
+            Войти
+          </Button>
+        </form>
+        <Typography variant="body2" align="center" sx={{ mt: 2 }}>
+          Нет аккаунта? <Link to="/register">Зарегистрироваться</Link>
+        </Typography>
+      </Box>
+    </Container>
   );
 }
 

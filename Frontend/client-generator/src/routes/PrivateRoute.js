@@ -8,12 +8,10 @@ const PrivateRoute = ({ children, roles }) => {
   const { authData, user } = useContext(AuthContext);
 
   if (!authData) {
-    // Если нет токена, перенаправляем на страницу входа
     return <Navigate to="/login" />;
   }
 
   if (roles && roles.length > 0 && !roles.includes(user?.role)) {
-    // Если роль пользователя не соответствует, перенаправляем на главную или другую страницу
     return <Navigate to="/login" />;
   }
 

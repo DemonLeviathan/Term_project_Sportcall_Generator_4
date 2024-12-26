@@ -20,10 +20,7 @@ public class ActivityService : IActivityService
             throw new ArgumentNullException(nameof(activity), "Activity cannot be null");
         }
 
-        // Добавляем активность через репозиторий
         unitOfWork.Activities.Add(activity);
-
-        // Сохраняем изменения через UnitOfWork
         unitOfWork.Commit();
     }
 
@@ -36,13 +33,28 @@ public class ActivityService : IActivityService
         }
 
         unitOfWork.Activities.Remove(activity);
-
         unitOfWork.Commit();
     }
 
     public Activities GetActivityById(int id)
     {
-        // Получаем активность по ID
         return unitOfWork.Activities.GetById(id);
+    }
+
+    public IEnumerable<Activities> GetAllActivities()
+    {
+        // Получаем все активности через репозиторий
+        return unitOfWork.Activities.GetAll();
+    }
+
+    public void UpdateActivity(Activities activity)
+    {
+        if (activity == null)
+        {
+            throw new ArgumentNullException(nameof(activity), "Activity cannot be null");
+        }
+
+        unitOfWork.Activities.Update(activity);
+        unitOfWork.Commit();
     }
 }

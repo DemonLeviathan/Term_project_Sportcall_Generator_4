@@ -99,6 +99,63 @@ namespace Generator.API.Controllers
             }
         }
 
+        [Authorize(Policy = "UserPolicy")]
+        [HttpGet("all")]
+        public async Task<IActionResult> GetAllUserData(string username, int page = 1, int size = 10)
+        {
+            if (string.IsNullOrEmpty(username))
+            {
+                return BadRequest("Имя пользователя отсутствует.");
+            }
+
+            // Ищем пользователя по username
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.username == username);
+            if (user == null)
+            {
+                return NotFound($"Пользователь с именем '{username}' не найден.");
+            }
+
+            // Получаем данные пользователя
+            var userDataQuery = _context.UserData.Where(ud => ud.user_id == user.user_id);
+
+            // Общее количество записей для пагинации
+            var totalRecords = await userDataQuery.CountAsync();
+
+            // Получаем записи UserData с учетом пагинации
+            var userDataRecords = await userDataQuery
+                .Skip((page - 1) * size)
+                .Take(size)
+                .ToListAsync();
+
+            // Получаем все связанные активности для выбранных записей
+            var activityIds = userDataRecords.Select(ud => ud.activity_id).Distinct();
+            var activities = await _context.Activities
+                .Where(a => activityIds.Contains(a.activity_id))
+                .ToDictionaryAsync(a => a.activity_id);
+
+            // Объединяем данные из UserData и Activities
+            var records = userDataRecords.Select(ud => new
+            {
+                ud.data_id,
+                ud.date_info,
+                ActivityName = activities.ContainsKey(ud.activity_id) ? activities[ud.activity_id].activity_name : null,
+                ActivityType = activities.ContainsKey(ud.activity_id) ? activities[ud.activity_id].activity_type : null,
+                ud.weight,
+                ud.height,
+            }).ToList();
+
+            // Общее количество страниц
+            var totalPages = (int)Math.Ceiling((double)totalRecords / size);
+
+            // Возвращаем данные и метаинформацию
+            return Ok(new
+            {
+                records,
+                totalPages,
+            });
+        }
+
+
 
 
         // update user data

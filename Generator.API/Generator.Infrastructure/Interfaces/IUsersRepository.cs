@@ -11,5 +11,7 @@ public interface IUsersRepository
 {
     void Add(Users user);
     Users GetByUsername(string username);
+    Users GetById(int id); 
+    IEnumerable<Users> GetAll(); 
     bool UserExists(string username);
 }

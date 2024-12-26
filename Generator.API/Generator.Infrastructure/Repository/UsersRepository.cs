@@ -1,5 +1,7 @@
 ﻿using Generator.Domain;
 using Generator.Infrastructure.Interfaces;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Generator.Infrastructure.Repository;
 
@@ -20,6 +22,16 @@ public class UsersRepository : IUsersRepository
     public Users GetByUsername(string username)
     {
         return _context.Users.FirstOrDefault(u => u.username == username);
+    }
+
+    public Users GetById(int id) 
+    {
+        return _context.Users.FirstOrDefault(u => u.user_id == id);
+    }
+
+    public IEnumerable<Users> GetAll() 
+    {
+        return _context.Users.ToList();
     }
 
     public bool UserExists(string username)
