@@ -12,6 +12,7 @@ namespace Generator.Application.Services
         public Calls GenerateDailyCall(Users user, int? friendId)
         {
             (int age, float bmi) = GetAgeAndBmi(user);
+
             var activity = DefineGroup(age, bmi, "daily");
 
             return new Calls
@@ -24,6 +25,7 @@ namespace Generator.Application.Services
                 user_id = user.user_id
             };
         }
+
 
         public Calls GenerateWeeklyCall(Users user, int? friendId)
         {
@@ -118,19 +120,24 @@ namespace Generator.Application.Services
             if (string.IsNullOrEmpty(preferredActivity))
             {
                 var task = group[RandomGenerator.Next(group.Count)];
+                Console.WriteLine($"Сгенерированное задание без предпочтений: {task.Task}");
                 return task;
             }
 
             var filteredGroup = group.Where(activity => IsActivityMatched(activity.Task, preferredActivity)).ToList();
             if (!filteredGroup.Any())
             {
+                Console.WriteLine("Нет соответствующих заданий, выбрано задание по умолчанию.");
                 var fallbackTask = group[RandomGenerator.Next(group.Count)];
                 return fallbackTask;
             }
 
             var matchedTask = filteredGroup[RandomGenerator.Next(filteredGroup.Count)];
+            Console.WriteLine($"Сгенерированное задание с предпочтениями: {matchedTask.Task}");
             return matchedTask;
         }
+
+
 
         private bool IsActivityMatched(string activityTask, string preferredActivity)
         {
@@ -161,18 +168,26 @@ namespace Generator.Application.Services
         {
             DateTime birthDate;
             int age = 0;
+
             if (DateTime.TryParse(user.birthday, out birthDate))
             {
                 age = CalculateAge(birthDate, DateTime.UtcNow);
             }
             else
             {
-                age = 18;
+                age = 18; 
             }
 
-            var latestUserData = user.UserData?.OrderByDescending(ud => ud.date_info).FirstOrDefault();
+            if (user.UserData == null || !user.UserData.Any())
+            {
+                Console.WriteLine("UserData отсутствует.");
+                return (age, 0f); 
+            }
+
+            var latestUserData = user.UserData.OrderByDescending(ud => ud.date_info).FirstOrDefault();
             if (latestUserData == null)
             {
+                Console.WriteLine("Последние данные отсутствуют.");
                 return (age, 0f);
             }
 
@@ -180,8 +195,10 @@ namespace Generator.Application.Services
             float height = latestUserData.height / 100f; 
 
             float bmi = CalculateBMI(weight, height);
+            Console.WriteLine($"Возраст: {age}, BMI: {bmi}");
             return (age, bmi);
         }
+
 
         private int CalculateAge(DateTime birthDate, DateTime now)
         {

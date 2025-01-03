@@ -52,9 +52,34 @@ const UserDashboard = () => {
   const [calls, setCalls] = useState([]); 
 
   useEffect(() => {
+    const fetchNotifications = async () => {
+      try {
+        const userId = await getCurrentUserId();
+  
+        // Запросы для получения запросов на дружбу и вызовов
+        const [friendNotifications, challengeNotifications] = await Promise.all([
+          api.get('/friendship/notifications', { params: { userId } }),
+          api.get('/challenge/notifications', { params: { userId } }),
+        ]);
+  
+        const combinedNotifications = [
+          ...friendNotifications.data.map((f) => ({ type: 'friendRequest', ...f })),
+          ...challengeNotifications.data.map((c) => ({ type: 'challenge', ...c })),
+        ];
+  
+        setNotifications(combinedNotifications);
+      } catch (err) {
+        console.error('Ошибка загрузки уведомлений:', err);
+      }
+    };
+  
+    fetchNotifications();
+  }, []);
+
+  
+  useEffect(() => {
     if (user) {
       fetchFriends();
-      fetchNotifications();
       fetchActivityTypes();
     } else {
       console.error('Текущий пользователь не определён.');
@@ -73,6 +98,11 @@ const UserDashboard = () => {
  useEffect(() => {
     fetchCallsNames();
   }, []);
+
+  useEffect(() => {
+    console.log("Загруженные вызовы:", calls);
+  }, [calls]);
+  
 
   const fetchUsers = useCallback(async () => {
     try {
@@ -118,13 +148,15 @@ const UserDashboard = () => {
     try {
       const username = localStorage.getItem('currentUser');
       if (!username) throw new Error('Имя пользователя отсутствует.');
-
+  
       const userResponse = await api.get('/user/get-id', { params: { username } });
       const userId = userResponse.data.user_id;
-
+  
+      console.log("ID пользователя для уведомлений:", userId);
+  
       const response = await api.get('/friendship/notifications', { params: { userId } });
       const notifications = response.data || [];
-
+  
       console.log('Полученные уведомления:', notifications);
       setNotifications(notifications);
     } catch (err) {
@@ -132,6 +164,7 @@ const UserDashboard = () => {
       // setError('Не удалось загрузить уведомления.');
     }
   }, []);
+  
 
   const fetchUserData = useCallback(async () => {
     try {
@@ -288,6 +321,34 @@ const UserDashboard = () => {
     }
   };
 
+
+  const handleAcceptChallenge = async (challengeId) => {
+    try {
+      await api.post('/challenge/respond', { ChallengeId: challengeId, Accept: true });
+      setNotifications((prev) =>
+        prev.filter((notification) => notification.challengeId !== challengeId)
+      );
+    } catch (err) {
+      console.error('Ошибка при принятии вызова:', err.response?.data || err.message);
+      setError('Не удалось обработать запрос.');
+    }
+  };
+  
+  const handleRejectChallenge = async (challengeId) => {
+    try {
+      await api.post('/challenge/respond', { ChallengeId: challengeId, Accept: false });
+      setNotifications((prev) =>
+        prev.filter((notification) => notification.challengeId !== challengeId)
+      );
+    } catch (err) {
+      console.error('Ошибка при отклонении вызова:', err.response?.data || err.message);
+      setError('Не удалось обработать запрос.');
+    }
+  };
+  
+  
+  
+
   const getCall = async (frequency) => {
     try {
       const username = localStorage.getItem('currentUser');
@@ -340,57 +401,6 @@ const UserDashboard = () => {
     }
   }, []);
 
-  // Открытие модального окна вызова
-  const handleOpenChallengeModal = (friend) => {
-    setSelectedFriendForChallenge(friend);
-    setSelectedCallForChallenge('');
-    setIsChallengeModalOpen(true);
-    setError('');
-    setSuccess('');
-  };
-
-  // Закрытие модального окна вызова
-  const handleCloseChallengeModal = () => {
-    setSelectedFriendForChallenge(null);
-    setSelectedCallForChallenge('');
-    setIsChallengeModalOpen(false);
-    setError('');
-    setSuccess('');
-  };
-
-  // Отправка вызова
-  const handleSendChallenge = async () => {
-    try {
-      if (!selectedCallForChallenge) {
-        setError('Пожалуйста, выберите вызов.');
-        return;
-      }
-  
-      const senderId = await getCurrentUserId();
-      if (!senderId) {
-        setError('Не удалось определить ID пользователя.');
-        return;
-      }
-  
-      const payload = {
-        SenderId: senderId,
-        ReceiverId: selectedFriendForChallenge.friend_id, 
-        CallId: selectedCallForChallenge.call_id,         
-        CallName: selectedCallForChallenge.call_name,     
-        Description: selectedCallForChallenge.description, 
-      };
-  
-      console.log('Отправляемый Payload:', payload); 
-  
-      const response = await api.post('/challenge/send', payload);
-      setSuccess('Вызов успешно отправлен.');
-      handleCloseChallengeModal();
-    } catch (err) {
-      console.error('Ошибка отправки вызова:', err.response?.data || err.message);
-      setError(err.response?.data || 'Не удалось отправить вызов.');
-    }
-  };
-  
   
 
   if (!user) {
@@ -472,48 +482,55 @@ const UserDashboard = () => {
         <Typography variant="h6">Добавить данные пользователя</Typography>
         
         {/* Выпадающий список типов активностей */}
-        <FormControl fullWidth margin="normal">
-          <InputLabel id="activity-type-label">Тип активности</InputLabel>
-          <Select
-            labelId="activity-type-label"
-            value={newUserData.activity_type || ''}
+        <TextField
+            select
             label="Тип активности"
+            value={newUserData.activity_type || ''}
             onChange={(e) => {
-              const selectedType = e.target.value;
-              setNewUserData({ ...newUserData, activity_type: selectedType });
-              fetchActivitiesByType(selectedType); 
+                const selectedType = e.target.value;
+                setNewUserData({ ...newUserData, activity_type: selectedType });
+                fetchActivitiesByType(selectedType); 
             }}
-          >
-            <MenuItem value="">
-              <em>Выберите тип активности</em>
-            </MenuItem>
+            fullWidth
+            margin="normal"
+            SelectProps={{
+                native: true,
+                displayEmpty: true,
+            }}
+            sx={{
+              '& .MuiInputLabel-root': { display: newUserData.activity_type ? 'block' : 'none' },
+          }}
+        >
+            <option value="">Выберите тип активности</option>
             {activityTypes.map((type) => (
-              <MenuItem key={type} value={type}>
-                {type}
-              </MenuItem>
+                <option key={type} value={type}>
+                    {type}
+                </option>
             ))}
-          </Select>
-        </FormControl>
-
+        </TextField>
         {/* Выпадающий список названий активностей */}
-        <FormControl fullWidth margin="normal" disabled={!newUserData.activity_type}>
-          <InputLabel id="activity-name-label">Название активности</InputLabel>
-          <Select
-            labelId="activity-name-label"
-            value={newUserData.activity_name || ''}
+        <TextField
+            select
             label="Название активности"
+            value={newUserData.activity_name || ''}
             onChange={(e) => setNewUserData({ ...newUserData, activity_name: e.target.value })}
-          >
-            <MenuItem value="">
-              <em>Выберите активность</em>
-            </MenuItem>
+            fullWidth
+            margin="normal"
+            SelectProps={{
+                native: true,
+                displayEmpty: true,
+            }}
+            sx={{
+              '& .MuiInputLabel-root': { display: newUserData.activity_type ? 'block' : 'none' },
+          }}
+        >
+            <option value="">Выберите активность</option>
             {filteredActivities.map((activity) => (
-              <MenuItem key={activity.activity_name} value={activity.activity_name}>
-                {activity.activity_name}
-              </MenuItem>
+                <option key={activity.activity_name} value={activity.activity_name}>
+                    {activity.activity_name}
+                </option>
             ))}
-          </Select>
-        </FormControl>
+        </TextField>
 
         {/* Поля для ввода веса и роста */}
         <TextField
@@ -648,11 +665,7 @@ const UserDashboard = () => {
                 {friends.map((friend) => (
                   <TableRow key={friend.friendId}>
                     <TableCell>{friend.friendName}</TableCell>
-                    <TableCell align="right">
-                      <Button variant="contained" onClick={() => handleOpenChallengeModal(friend)}>
-                        Бросить вызов
-                      </Button>
-                    </TableCell>
+                    
                   </TableRow>
                 ))}
               </TableBody>
@@ -661,109 +674,94 @@ const UserDashboard = () => {
         )}
       </Box>
       
-      {/* Модальное окно для отправки вызова */}
-      <Modal
-        open={isChallengeModalOpen}
-        onClose={handleCloseChallengeModal}
-        aria-labelledby="send-challenge-modal"
-        aria-describedby="send-challenge-modal-description"
-      >
-        <Box
-          sx={{
-            position: 'absolute',
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
-            width: 400,
-            bgcolor: 'background.paper',
-            boxShadow: 24,
-            p: 4,
-            borderRadius: 2,
-          }}
-        >
-          <Typography id="send-challenge-modal" variant="h6" component="h2">
-            Бросить вызов {selectedFriendForChallenge?.username}
-          </Typography>
-
-          <Box sx={{ mt: 2 }}>
-            <Typography variant="subtitle1">Выберите вызов:</Typography>
-            <FormControl fullWidth sx={{ mt: 1 }}>
-              <InputLabel id="select-call-label">Вызов</InputLabel>
-              <Select
-                labelId="select-call-label"
-                id="select-call"
-                value={selectedCallForChallenge?.call_id || ''}
-                label="Вызов"
-                onChange={(e) => {
-                  const selected = calls.find((c) => c.call_id === e.target.value);
-                  setSelectedCallForChallenge(selected || null);
-                }}
-              >
-                <MenuItem value="">
-                  <em>Выберите вызов</em>
-                </MenuItem>
-                {calls.map((call) => (
-                  <MenuItem key={call.call_id} value={call.call_id}>
-                    {call.call_name} - {call.description}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-          </Box>
-
-          <Box sx={{ mt: 3, display: 'flex', justifyContent: 'flex-end', gap: 2 }}>
-            <Button variant="outlined" onClick={handleCloseChallengeModal}>
-              Отмена
-            </Button>
-            <Button variant="contained" onClick={handleSendChallenge}>
-              Отправить
-            </Button>
-          </Box>
-        </Box>
-      </Modal>
 
       {/* Уведомления */}
       <Box sx={{ mb: 4 }}>
-        <Typography variant="h6">Уведомления</Typography>
-        {notifications.length === 0 ? (
-          <Typography variant="body1" sx={{ mt: 2 }}>
-            Нет уведомлений
-          </Typography>
-        ) : (
-          <TableContainer component={Paper} sx={{ mt: 2 }}>
-            <Table>
-              <TableHead>
-                <TableRow>
-                  <TableCell>Имя пользователя</TableCell>
-                  <TableCell align="right">Действие</TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {notifications.map((notification) => (
-                  <TableRow key={notification.friend_id}>
-                    <TableCell>{notification.senderName || 'Имя отсутствует'}</TableCell>
-                    <TableCell align="right">
-                      <Button
-                        variant="contained"
-                        onClick={() => handleRespondNotification(notification.friend_id, notification.recieverName, notification.recieverId, notification.senderId, notification.senderName, true)}
-                        sx={{ mr: 1 }}
-                      >
-                        Принять
-                      </Button>
-                      <Button
-                        variant="outlined"
-                        onClick={() => handleRespondNotification(notification.friend_id, notification.recieverName, notification.recieverId, notification.senderId, notification.senderName, false)}
-                      >
-                        Отклонить
-                      </Button>
-                    </TableCell>
+          <Typography variant="h6">Уведомления</Typography>
+          {notifications.length === 0 ? (
+            <Typography variant="body1" sx={{ mt: 2 }}>
+              Нет уведомлений
+            </Typography>
+          ) : (
+            <TableContainer component={Paper} sx={{ mt: 2 }}>
+              <Table>
+                <TableHead>
+                  <TableRow>
+                    <TableCell>Имя пользователя</TableCell>
+                    <TableCell>Тип уведомления</TableCell>
+                    <TableCell align="right">Действие</TableCell>
                   </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </TableContainer>
-        )}
-      </Box>
+                </TableHead>
+                <TableBody>
+                  {notifications.map((notification, index) => (
+                    <TableRow key={index}>
+                      <TableCell>{notification.senderName || 'Имя отсутствует'}</TableCell>
+                      <TableCell>
+                        {notification.type === 'friendRequest'
+                          ? 'Запрос на дружбу'
+                          : 'Вызов'}
+                      </TableCell>
+                      <TableCell align="right">
+                        {notification.type === 'friendRequest' ? (
+                          <>
+                            <Button
+                              variant="contained"
+                              onClick={() =>
+                                handleRespondNotification(
+                                  notification.friend_id,
+                                  notification.recieverName,
+                                  notification.recieverId,
+                                  notification.senderId,
+                                  notification.senderName,
+                                  true
+                                )
+                              }
+                              sx={{ mr: 1 }}
+                            >
+                              Принять
+                            </Button>
+                            <Button
+                              variant="outlined"
+                              onClick={() =>
+                                handleRespondNotification(
+                                  notification.friend_id,
+                                  notification.recieverName,
+                                  notification.recieverId,
+                                  notification.senderId,
+                                  notification.senderName,
+                                  false
+                                )
+                              }
+                            >
+                              Отклонить
+                            </Button>
+                          </>
+                        ) : (
+                          <>
+                            <Button
+                              variant="contained"
+                              onClick={() => handleAcceptChallenge(notification.challengeId)}
+                              sx={{ mr: 1 }}
+                            >
+                              Принять вызов
+                            </Button>
+                            <Button
+                              variant="outlined"
+                              onClick={() => handleRejectChallenge(notification.challengeId)}
+                            >
+                              Отклонить вызов
+                            </Button>
+                          </>
+                        )}
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </TableContainer>
+          )}
+        </Box>
+
     </Container>
   );
 };

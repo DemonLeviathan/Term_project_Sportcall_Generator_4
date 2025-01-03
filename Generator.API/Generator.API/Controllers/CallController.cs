@@ -33,7 +33,9 @@ public class CallController : Controller
         if (string.IsNullOrEmpty(username))
             return BadRequest("Имя пользователя отсутствует.");
 
-        var user = await _context.Users.FirstOrDefaultAsync(u => u.username == username);
+        var user = await _context.Users
+            .Include(u => u.UserData) 
+            .FirstOrDefaultAsync(u => u.username == username);
         if (user == null)
             return NotFound("Пользователь не найден.");
 
@@ -54,7 +56,9 @@ public class CallController : Controller
         if (string.IsNullOrEmpty(username))
             return BadRequest("Имя пользователя отсутствует.");
 
-        var user = await _context.Users.FirstOrDefaultAsync(u => u.username == username);
+        var user = await _context.Users
+            .Include(u => u.UserData)
+            .FirstOrDefaultAsync(u => u.username == username);
         if (user == null)
             return NotFound("Пользователь не найден.");
 
@@ -75,7 +79,9 @@ public class CallController : Controller
         if (string.IsNullOrEmpty(username))
             return BadRequest("Имя пользователя отсутствует.");
 
-        var user = await _context.Users.FirstOrDefaultAsync(u => u.username == username);
+        var user = await _context.Users
+            .Include(u => u.UserData)
+            .FirstOrDefaultAsync(u => u.username == username);
         if (user == null)
             return NotFound("Пользователь не найден.");
 

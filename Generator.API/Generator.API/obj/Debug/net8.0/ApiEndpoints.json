@@ -290,7 +290,23 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "Generator.API.Controllers.ChallengeController",
+    "ContainingType": "ChallengeController",
+    "Method": "GetChallengeNotifications",
+    "RelativePath": "api/Challenge/notifications",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ChallengeController",
     "Method": "GetReceivedChallenges",
     "RelativePath": "api/Challenge/received",
     "HttpMethod": "GET",
@@ -306,7 +322,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "Generator.API.Controllers.ChallengeController",
+    "ContainingType": "ChallengeController",
     "Method": "RespondToChallenge",
     "RelativePath": "api/Challenge/respond",
     "HttpMethod": "POST",
@@ -322,7 +338,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "Generator.API.Controllers.ChallengeController",
+    "ContainingType": "ChallengeController",
     "Method": "SendChallenge",
     "RelativePath": "api/Challenge/send",
     "HttpMethod": "POST",

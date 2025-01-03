@@ -135,6 +135,8 @@ public class FriendshipController : Controller
             .ToListAsync();
 
         if (!notifications.Any())
+            return Ok(new List<object>());
+        if (!notifications.Any())
             return NotFound("No notifications found.");
 
         return Ok(notifications);
