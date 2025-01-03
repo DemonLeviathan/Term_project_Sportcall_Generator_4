@@ -15,6 +15,8 @@ public class ApplicationDbContext : DbContext
     public DbSet<Domain.Friendship> Friendships { get; set; }
     public DbSet<Domain.UserData> UserData { get; set; }
     public DbSet<Domain.Calls> Calls { get; set; }
+    public DbSet<Challenge> Challenges { get; set; }
+    public DbSet<UserCall> UserCalls { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

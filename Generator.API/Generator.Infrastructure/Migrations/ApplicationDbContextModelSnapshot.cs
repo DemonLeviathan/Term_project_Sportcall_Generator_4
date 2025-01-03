@@ -22,6 +22,44 @@ namespace Generator.Infrastructure.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
+            modelBuilder.Entity("Challenge", b =>
+                {
+                    b.Property<int>("ChallengeId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("ChallengeId"));
+
+                    b.Property<int>("CallId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("ReceiverId")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime?>("RespondedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<int>("SenderId")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime>("SentAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("ChallengeId");
+
+                    b.HasIndex("CallId");
+
+                    b.HasIndex("ReceiverId");
+
+                    b.HasIndex("SenderId");
+
+                    b.ToTable("Challenges");
+                });
+
             modelBuilder.Entity("Generator.Domain.Activities", b =>
                 {
                     b.Property<int>("activity_id")
@@ -66,12 +104,15 @@ namespace Generator.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<int>("friend_id")
+                    b.Property<int?>("friend_id")
                         .HasColumnType("integer");
 
                     b.Property<string>("status")
                         .IsRequired()
                         .HasColumnType("text");
+
+                    b.Property<int>("user_id")
+                        .HasColumnType("integer");
 
                     b.HasKey("call_id");
 
@@ -176,6 +217,63 @@ namespace Generator.Infrastructure.Migrations
                     b.ToTable("Users");
                 });
 
+            modelBuilder.Entity("UserCall", b =>
+                {
+                    b.Property<int>("UserCallId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("UserCallId"));
+
+                    b.Property<DateTime>("AssignedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<int>("CallId")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("UserCallId");
+
+                    b.HasIndex("CallId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("UserCalls");
+                });
+
+            modelBuilder.Entity("Challenge", b =>
+                {
+                    b.HasOne("Generator.Domain.Calls", "Call")
+                        .WithMany()
+                        .HasForeignKey("CallId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Generator.Domain.Users", "Receiver")
+                        .WithMany()
+                        .HasForeignKey("ReceiverId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Generator.Domain.Users", "Sender")
+                        .WithMany()
+                        .HasForeignKey("SenderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Call");
+
+                    b.Navigation("Receiver");
+
+                    b.Navigation("Sender");
+                });
+
             modelBuilder.Entity("Generator.Domain.Calls", b =>
                 {
                     b.HasOne("Generator.Domain.Users", null)
@@ -185,8 +283,7 @@ namespace Generator.Infrastructure.Migrations
                     b.HasOne("Generator.Domain.Friendship", "Friendship")
                         .WithMany("Calls")
                         .HasForeignKey("friend_id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.Navigation("Friendship");
                 });
@@ -225,6 +322,25 @@ namespace Generator.Infrastructure.Migrations
                         .IsRequired();
 
                     b.Navigation("Activity");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("UserCall", b =>
+                {
+                    b.HasOne("Generator.Domain.Calls", "Call")
+                        .WithMany()
+                        .HasForeignKey("CallId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Generator.Domain.Users", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Call");
 
                     b.Navigation("User");
                 });

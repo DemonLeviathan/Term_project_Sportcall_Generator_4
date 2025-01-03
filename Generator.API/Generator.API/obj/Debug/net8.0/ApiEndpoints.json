@@ -179,6 +179,165 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "Generator.API.Controllers.CallController",
+    "Method": "GenerateDailyCall",
+    "RelativePath": "api/Call/generate/daily",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "username",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "friendId",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Generator.API.Controllers.CallController",
+    "Method": "GenerateMonthlyCall",
+    "RelativePath": "api/Call/generate/monthly",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "username",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "friendId",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Generator.API.Controllers.CallController",
+    "Method": "GenerateWeeklyCall",
+    "RelativePath": "api/Call/generate/weekly",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "username",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "friendId",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Generator.API.Controllers.CallController",
+    "Method": "UpdateCallStatus",
+    "RelativePath": "api/Call/update-status",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Generator.API.Controllers.UpdateCallStatusDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Generator.API.Controllers.CallController",
+    "Method": "GetUserCalls",
+    "RelativePath": "api/Call/user-calls",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "username",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Generator.API.Controllers.CallController",
+    "Method": "GetUserCallsName",
+    "RelativePath": "api/Call/user-calls-name",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "username",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Generator.API.Controllers.ChallengeController",
+    "Method": "GetReceivedChallenges",
+    "RelativePath": "api/Challenge/received",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Generator.API.Controllers.ChallengeController",
+    "Method": "RespondToChallenge",
+    "RelativePath": "api/Challenge/respond",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "Generator.API.DTO.RespondChallengeDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Generator.API.Controllers.ChallengeController",
+    "Method": "SendChallenge",
+    "RelativePath": "api/Challenge/send",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "Generator.API.DTO.SendChallengeDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Generator.API.Controllers.FriendshipController",
     "Method": "GetFriendshipById",
     "RelativePath": "api/Friendship/{id}",
@@ -274,6 +433,32 @@
       {
         "Name": "accept",
         "Type": "System.Boolean",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Generator.API.Controllers.StatsController",
+    "Method": "GetGlobalStats",
+    "RelativePath": "api/Stats/admin",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Generator.API.Controllers.StatsController",
+    "Method": "GetUserStats",
+    "RelativePath": "api/Stats/user",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "username",
+        "Type": "System.String",
         "IsRequired": false
       }
     ],

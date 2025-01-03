@@ -12,7 +12,6 @@ namespace Generator.Application.Services
         public Calls GenerateDailyCall(Users user, int? friendId)
         {
             (int age, float bmi) = GetAgeAndBmi(user);
-
             var activity = DefineGroup(age, bmi, "daily");
 
             return new Calls
@@ -21,14 +20,14 @@ namespace Generator.Application.Services
                 friend_id = friendId,
                 call_date = DateTime.UtcNow.ToString("yyyy-MM-dd"),
                 status = "pending",
-                description = activity.Item2
+                description = activity.Item2,
+                user_id = user.user_id
             };
         }
 
         public Calls GenerateWeeklyCall(Users user, int? friendId)
         {
             (int age, float bmi) = GetAgeAndBmi(user);
-
             var activity = DefineGroup(age, bmi, "weekly");
 
             return new Calls
@@ -37,14 +36,14 @@ namespace Generator.Application.Services
                 friend_id = friendId,
                 call_date = DateTime.UtcNow.ToString("yyyy-MM-dd"),
                 status = "pending",
-                description = activity.Item2
+                description = activity.Item2,
+                user_id = user.user_id 
             };
         }
 
         public Calls GenerateMonthlyCall(Users user, int? friendId)
         {
             (int age, float bmi) = GetAgeAndBmi(user);
-
             var activity = DefineGroup(age, bmi, "monthly");
 
             return new Calls
@@ -53,38 +52,67 @@ namespace Generator.Application.Services
                 friend_id = friendId,
                 call_date = DateTime.UtcNow.ToString("yyyy-MM-dd"),
                 status = "pending",
-                description = activity.Item2
+                description = activity.Item2,
+                user_id = user.user_id 
             };
         }
 
         private (string taskName, string description) DefineGroup(int age, float bmi, string frequency, string? preferredActivity = null)
         {
+            int freqMultiplier = frequency switch
+            {
+                "weekly" => 7,
+                "monthly" => 30,
+                _ => 1
+            };
+
             List<(string Task, string Description)> group;
 
             if (age < 14 || age > 60 || bmi >= 30)
             {
                 group = new List<(string, string)>
-        {
-            ("Ходьба", $"Пройдите {RandomGenerator.Next(3000, 10000)} шагов {GetTime(frequency)}"),
-            ("Бассейн", $"Посетите бассейн. Плавайте {RandomGenerator.Next(30, 60)} минут {GetTime(frequency)}")
-        };
+                {
+                    (
+                        "Ходьба",
+                        $"Пройдите {RandomGenerator.Next(3000, 10000) * freqMultiplier} шагов {GetTime(frequency)}"
+                    ),
+                    (
+                        "Бассейн",
+                        $"Посетите бассейн. Плавайте {RandomGenerator.Next(30, 60) * freqMultiplier} минут {GetTime(frequency)}"
+                    )
+                };
             }
             else if (age >= 14 && age <= 45 && bmi >= 18.5 && bmi < 25)
             {
                 group = new List<(string, string)>
-        {
-            ("Бег", $"Пробегите {RandomGenerator.Next(2, 5)} км {GetTime(frequency)}"),
-            ("Занятие в тренажёрном зале", $"Посетите тренажерный зал. Проведите тренировку длительностью {RandomGenerator.Next(40, 150)} минут {GetTime(frequency)}"),
-            ("Беговые упражнения", $"Сделайте {RandomGenerator.Next(20, 40)} минут беговых упражнений {GetTime(frequency)}")
-        };
+                {
+                    (
+                        "Бег",
+                        $"Пробегите {RandomGenerator.Next(1, 3) * freqMultiplier} км {GetTime(frequency)}"
+                    ),
+                    (
+                        "Занятие в тренажёрном зале",
+                        $"Посетите тренажерный зал. Проведите тренировку длительностью {RandomGenerator.Next(40, 150) * freqMultiplier} минут {GetTime(frequency)}"
+                    ),
+                    (
+                        "Беговые упражнения",
+                        $"Сделайте {RandomGenerator.Next(20, 40) * freqMultiplier} минут беговых упражнений {GetTime(frequency)}"
+                    )
+                };
             }
             else
             {
                 group = new List<(string, string)>
-        {
-            ("Ходьба", $"Пройдите {RandomGenerator.Next(4000, 8000)} шагов {GetTime(frequency)}"),
-            ("Бассейн", $"Посетите бассейн. Плавайте {RandomGenerator.Next(25, 40)} минут {GetTime(frequency)}")
-        };
+                {
+                    (
+                        "Ходьба",
+                        $"Пройдите {RandomGenerator.Next(4000, 8000) * freqMultiplier} шагов {GetTime(frequency)}"
+                    ),
+                    (
+                        "Бассейн",
+                        $"Посетите бассейн. Плавайте {RandomGenerator.Next(25, 40) * freqMultiplier} минут {GetTime(frequency)}"
+                    )
+                };
             }
 
             if (string.IsNullOrEmpty(preferredActivity))
@@ -94,7 +122,6 @@ namespace Generator.Application.Services
             }
 
             var filteredGroup = group.Where(activity => IsActivityMatched(activity.Task, preferredActivity)).ToList();
-
             if (!filteredGroup.Any())
             {
                 var fallbackTask = group[RandomGenerator.Next(group.Count)];
@@ -109,16 +136,15 @@ namespace Generator.Application.Services
         {
             return preferredActivity switch
             {
-                "Team sport" => activityTask.Contains("беговые упражнения", StringComparison.OrdinalIgnoreCase) ||
-                                activityTask.Contains("тренировки", StringComparison.OrdinalIgnoreCase),
-                "Athletics" => activityTask.Contains("бег", StringComparison.OrdinalIgnoreCase) ||
-                               activityTask.Contains("беговые упражнения", StringComparison.OrdinalIgnoreCase),
+                "Team sport" => activityTask.Contains("беговые упражнения", StringComparison.OrdinalIgnoreCase)
+                               || activityTask.Contains("тренировки", StringComparison.OrdinalIgnoreCase),
+                "Athletics" => activityTask.Contains("бег", StringComparison.OrdinalIgnoreCase)
+                               || activityTask.Contains("беговые упражнения", StringComparison.OrdinalIgnoreCase),
                 "Swimming" => activityTask.Contains("бассейн", StringComparison.OrdinalIgnoreCase),
                 "Walking" => activityTask.Contains("ходьба", StringComparison.OrdinalIgnoreCase),
                 _ => false
             };
         }
-
 
         private string GetTime(string frequency)
         {
@@ -151,7 +177,7 @@ namespace Generator.Application.Services
             }
 
             float weight = latestUserData.weight;
-            float height = latestUserData.height / 100;
+            float height = latestUserData.height / 100f; 
 
             float bmi = CalculateBMI(weight, height);
             return (age, bmi);
@@ -167,6 +193,9 @@ namespace Generator.Application.Services
 
         private float CalculateBMI(float weight, float height)
         {
+            if (height <= 0.0)
+                return 0.0f;
+
             return weight / (height * height);
         }
     }

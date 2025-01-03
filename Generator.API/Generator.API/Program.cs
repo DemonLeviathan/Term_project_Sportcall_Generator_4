@@ -100,6 +100,8 @@ builder.Services.AddScoped<IUserDataRepository, UserDataRepository>();
 builder.Services.AddScoped<IUserDataService, UserDataService>();
 builder.Services.AddScoped<IUsersRepository, UsersRepository>();
 builder.Services.AddScoped<IUsersService, UsersService>();
+builder.Services.AddScoped<IChallengeGeneratorService, ChallengeGeneratorService>();
+
 
 builder.Services.AddSingleton<TokenService>();
 
