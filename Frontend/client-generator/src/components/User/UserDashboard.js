@@ -24,6 +24,7 @@ import {
 import api from '../../services/api';
 import ChallengeComponent from './ChallengeComponent'; 
 import CallList from './CallList'; 
+import UserActivityInput from './UserActivityInput'
 
 const UserDashboard = () => {
   const { user } = useContext(AuthContext); 
@@ -56,12 +57,14 @@ const UserDashboard = () => {
       try {
         const userId = await getCurrentUserId();
   
-        // Запросы для получения запросов на дружбу и вызовов
         const [friendNotifications, challengeNotifications] = await Promise.all([
           api.get('/friendship/notifications', { params: { userId } }),
-          api.get('/challenge/notifications', { params: { userId } }),
+          api.get('/Challenge/notifications', { params: { userId } }),
         ]);
-  
+
+        console.log("friendNotifications",friendNotifications)
+        console.log("challengeNotifications",challengeNotifications)
+
         const combinedNotifications = [
           ...friendNotifications.data.map((f) => ({ type: 'friendRequest', ...f })),
           ...challengeNotifications.data.map((c) => ({ type: 'challenge', ...c })),
@@ -144,28 +147,29 @@ const UserDashboard = () => {
     }
   }, []);
 
-  const fetchNotifications = useCallback(async () => {
+  const fetchNotifications = async () => {
     try {
-      const username = localStorage.getItem('currentUser');
-      if (!username) throw new Error('Имя пользователя отсутствует.');
-  
-      const userResponse = await api.get('/user/get-id', { params: { username } });
-      const userId = userResponse.data.user_id;
-  
+      const userId = await getCurrentUserId();
       console.log("ID пользователя для уведомлений:", userId);
   
-      const response = await api.get('/friendship/notifications', { params: { userId } });
-      const notifications = response.data || [];
+      const [friendNotifications, challengeNotifications] = await Promise.all([
+        api.get('/friendship/notifications', { params: { userId } }),
+        api.get('/Сhallenge/notifications', { params: { userId } }),
+      ]);
+
+      console.log("Dataaa12",friendNotifications)
+
+      const combinedNotifications = [
+        ...friendNotifications.data.map((f) => ({ type: 'friendRequest', ...f })),
+        ...challengeNotifications.data.map((c) => ({ type: 'challenge', ...c })),
+      ];
   
-      console.log('Полученные уведомления:', notifications);
-      setNotifications(notifications);
+      setNotifications(friendNotifications);
     } catch (err) {
       console.error('Ошибка загрузки уведомлений:', err.response?.data || err.message);
-      // setError('Не удалось загрузить уведомления.');
     }
-  }, []);
+  };
   
-
   const fetchUserData = useCallback(async () => {
     try {
       const username = localStorage.getItem("currentUser");
@@ -287,39 +291,56 @@ const UserDashboard = () => {
     }
   };
 
-  const handleRespondNotification = async (notificationId, recieverName, recieverId, senderId, senderName, accept) => {
+  const handleRespondNotification = async (
+    notificationId,
+    recieverName,
+    recieverId,
+    senderId,
+    senderName,
+    accept
+  ) => {
     try {
       const username = localStorage.getItem('currentUser');
       if (!username) throw new Error('Имя пользователя отсутствует в localStorage.');
-
+  
       const payload = {
         friend_id: notificationId,
         user1_id: senderId,
         user2_id: recieverId,
         IsPending: !accept,
       };
-
-      console.log('Payload для обработки уведомления:', payload);
-
-      const response = await api.post(
-        `/friendship/respond`,
-        payload,
-        { params: { accept } }
-      );
-
+  
+      console.log('Параметры для обработки уведомления:', {
+        notificationId,
+        recieverName,
+        recieverId,
+        senderId,
+        senderName,
+        accept,
+      });
+      console.log('Payload для отправки:', payload);
+  
+      const response = await api.post(`/friendship/respond`, payload, { params: { accept } });
       console.log('Ответ сервера:', response.data);
+  
       setSuccess('Запрос обработан успешно!');
-
-      setNotifications((prevNotifications) =>
-        prevNotifications.filter((notification) => notification.friend_id !== notificationId)
-      );
-
-      fetchFriends(); 
+  
+      setNotifications((prevNotifications) => {
+        console.log('Предыдущие уведомления:', prevNotifications);
+        const updatedNotifications = prevNotifications.filter(
+          (notification) => notification.friend_id !== notificationId
+        );
+        console.log('Обновленные уведомления:', updatedNotifications);
+        return updatedNotifications;
+      });
+  
+      fetchFriends();
     } catch (err) {
       console.error('Ошибка обработки уведомления:', err.response?.data || err.message);
       setError('Не удалось обработать запрос.');
     }
   };
+  
 
 
   const handleAcceptChallenge = async (challengeId) => {
@@ -402,6 +423,17 @@ const UserDashboard = () => {
   }, []);
 
   
+  const handleLogout = async () => {
+    try {
+      await api.post('account/logout'); 
+      localStorage.removeItem('currentUser'); 
+      localStorage.removeItem('currentUserRole'); 
+      window.location.href = '/login'; 
+    } catch (err) {
+      console.error('Ошибка выхода:', err.response?.data || err.message);
+    }
+  };
+  
 
   if (!user) {
     return (
@@ -470,17 +502,21 @@ const UserDashboard = () => {
             </Box>
           </Paper>
         )}
+        <hr style={{ margin: '20px 0', borderColor: '#ddd' }} />
       </Box>
 
       {/* Список вызовов пользователя*/}
       <Box sx={{ p: 2, mb: 4 }}>
         <CallList /> {}
+        <hr style={{ margin: '20px 0', borderColor: '#ddd' }} />
       </Box>
 
       {/* Добавление пользовательских данных */}
       <Box sx={{ mb: 4 }}>
         <Typography variant="h6">Добавить данные пользователя</Typography>
-        
+        <Box>
+        <UserActivityInput />
+        </Box>
         {/* Выпадающий список типов активностей */}
         <TextField
             select
@@ -603,6 +639,7 @@ const UserDashboard = () => {
             Вперёд
           </Button>
         </Box>
+        <hr style={{ margin: '20px 0', borderColor: '#ddd' }} />
       </Box>
 
       {/* Функционал: поиск, друзья, уведомления */}
@@ -672,95 +709,107 @@ const UserDashboard = () => {
             </Table>
           </TableContainer>
         )}
+        <hr style={{ margin: '40px 0', borderColor: '#ddd' }} />
       </Box>
       
 
       {/* Уведомления */}
       <Box sx={{ mb: 4 }}>
-          <Typography variant="h6">Уведомления</Typography>
-          {notifications.length === 0 ? (
-            <Typography variant="body1" sx={{ mt: 2 }}>
-              Нет уведомлений
-            </Typography>
-          ) : (
-            <TableContainer component={Paper} sx={{ mt: 2 }}>
-              <Table>
-                <TableHead>
-                  <TableRow>
-                    <TableCell>Имя пользователя</TableCell>
-                    <TableCell>Тип уведомления</TableCell>
-                    <TableCell align="right">Действие</TableCell>
+        <Typography variant="h6">Уведомления</Typography>
+        {notifications.length === 0 ? (
+          <Typography variant="body1" sx={{ mt: 2 }}>
+            Нет уведомлений
+          </Typography>
+        ) : (
+          <TableContainer component={Paper} sx={{ mt: 2 }}>
+            <Table>
+              <TableHead>
+                <TableRow>
+                  <TableCell>Имя пользователя</TableCell>
+                  <TableCell>Тип уведомления</TableCell>
+                  <TableCell>Описание</TableCell>
+                  <TableCell align="right">Действие</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {notifications.map((notification, index) => (
+                  <TableRow key={index}>
+                    <TableCell>{notification.senderName || 'Имя отсутствует'}</TableCell>
+                    <TableCell>
+                      {notification.type === 'friendRequest'
+                        ? 'Запрос на дружбу'
+                        : 'Вызов'}
+                    </TableCell>
+                    <TableCell>
+                      {notification.type === 'challenge' && notification.description
+                        ? notification.description
+                        : 'Не указано'}
+                    </TableCell>
+                    <TableCell align="right">
+                      {notification.type === 'friendRequest' ? (
+                        <>
+                          <Button
+                            variant="contained"
+                            onClick={() =>
+                              handleRespondNotification(
+                                notification.friend_id,
+                                notification.recieverName,
+                                notification.recieverId,
+                                notification.senderId,
+                                notification.senderName,
+                                true
+                              )
+                            }
+                            sx={{ mr: 1 }}
+                          >
+                            Принять
+                          </Button>
+                          <Button
+                            variant="outlined"
+                            onClick={() =>
+                              handleRespondNotification(
+                                notification.friend_id,
+                                notification.recieverName,
+                                notification.recieverId,
+                                notification.senderId,
+                                notification.senderName,
+                                false
+                              )
+                            }
+                          >
+                            Отклонить
+                          </Button>
+                        </>
+                      ) : (
+                        <>
+                          <Button
+                            variant="contained"
+                            onClick={() => handleAcceptChallenge(notification.challengeId)}
+                            sx={{ mr: 1 }}
+                          >
+                            Принять вызов
+                          </Button>
+                          <Button
+                            variant="outlined"
+                            onClick={() => handleRejectChallenge(notification.challengeId)}
+                          >
+                            Отклонить вызов
+                          </Button>
+                        </>
+                      )}
+                    </TableCell>
                   </TableRow>
-                </TableHead>
-                <TableBody>
-                  {notifications.map((notification, index) => (
-                    <TableRow key={index}>
-                      <TableCell>{notification.senderName || 'Имя отсутствует'}</TableCell>
-                      <TableCell>
-                        {notification.type === 'friendRequest'
-                          ? 'Запрос на дружбу'
-                          : 'Вызов'}
-                      </TableCell>
-                      <TableCell align="right">
-                        {notification.type === 'friendRequest' ? (
-                          <>
-                            <Button
-                              variant="contained"
-                              onClick={() =>
-                                handleRespondNotification(
-                                  notification.friend_id,
-                                  notification.recieverName,
-                                  notification.recieverId,
-                                  notification.senderId,
-                                  notification.senderName,
-                                  true
-                                )
-                              }
-                              sx={{ mr: 1 }}
-                            >
-                              Принять
-                            </Button>
-                            <Button
-                              variant="outlined"
-                              onClick={() =>
-                                handleRespondNotification(
-                                  notification.friend_id,
-                                  notification.recieverName,
-                                  notification.recieverId,
-                                  notification.senderId,
-                                  notification.senderName,
-                                  false
-                                )
-                              }
-                            >
-                              Отклонить
-                            </Button>
-                          </>
-                        ) : (
-                          <>
-                            <Button
-                              variant="contained"
-                              onClick={() => handleAcceptChallenge(notification.challengeId)}
-                              sx={{ mr: 1 }}
-                            >
-                              Принять вызов
-                            </Button>
-                            <Button
-                              variant="outlined"
-                              onClick={() => handleRejectChallenge(notification.challengeId)}
-                            >
-                              Отклонить вызов
-                            </Button>
-                          </>
-                        )}
-                      </TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            </TableContainer>
-          )}
-        </Box>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        )}
+      </Box>
+      <Box sx={{ display: 'flex', justifyContent: 'flex-end', p: 2 }}>
+  <Button variant="contained" color="error" onClick={handleLogout}>
+    Выйти
+  </Button>
+</Box>
 
     </Container>
   );

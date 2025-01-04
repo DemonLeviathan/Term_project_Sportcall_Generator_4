@@ -91,6 +91,22 @@
   },
   {
     "ContainingType": "Generator.API.Controllers.ActivityController",
+    "Method": "GetDailyActivityById",
+    "RelativePath": "api/Activity/{id}/daily-activity",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Generator.API.Controllers.ActivityController",
     "Method": "GetAllActivities",
     "RelativePath": "api/Activity/activities",
     "HttpMethod": "GET",
@@ -106,6 +122,22 @@
         "Name": "pageSize",
         "Type": "System.Int32",
         "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Generator.API.Controllers.ActivityController",
+    "Method": "AddDailyActivity",
+    "RelativePath": "api/Activity/add-daily-activity",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dailyActivityDto",
+        "Type": "DailyActivityDto",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []
@@ -160,6 +192,43 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Generator.API.Controllers.ActivityController",
+    "Method": "UpdateDailyActivity",
+    "RelativePath": "api/Activity/update-daily-activity/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "updatedActivityDto",
+        "Type": "DailyActivityDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Generator.API.Controllers.ActivityController",
+    "Method": "GetUserDailyActivities",
+    "RelativePath": "api/Activity/user-daily-activities/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   },
   {

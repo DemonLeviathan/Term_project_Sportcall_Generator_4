@@ -17,6 +17,7 @@ public class ApplicationDbContext : DbContext
     public DbSet<Domain.Calls> Calls { get; set; }
     public DbSet<Challenge> Challenges { get; set; }
     public DbSet<UserCall> UserCalls { get; set; }
+    public DbSet<DailyActivity> DailyActivities { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -32,6 +33,8 @@ public class ApplicationDbContext : DbContext
         .HasKey(a => a.data_id);
         modelBuilder.Entity<Users>()
         .HasKey(a => a.user_id);
+        modelBuilder.Entity<DailyActivity>()
+        .HasKey(a => a.dailyAcivityId);
 
 
         modelBuilder.Entity<UserData>()
@@ -72,5 +75,11 @@ public class ApplicationDbContext : DbContext
             .Property(ud => ud.date_info)
             .HasColumnType("date")
             .HasDefaultValueSql("CURRENT_DATE");
+
+        modelBuilder.Entity<DailyActivity>()
+                .HasOne<Users>()
+                .WithMany(u => u.DailyActivities)
+                .HasForeignKey(d => d.userId)
+                .OnDelete(DeleteBehavior.Cascade);
     }
 }

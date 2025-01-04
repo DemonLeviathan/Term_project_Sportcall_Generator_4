@@ -21,4 +21,7 @@ public class Users
 
     [JsonIgnore]
     public ICollection<Calls> Calls { get; set; }
+
+    [JsonIgnore]
+    public ICollection<DailyActivity> DailyActivities { get; set; }
 }

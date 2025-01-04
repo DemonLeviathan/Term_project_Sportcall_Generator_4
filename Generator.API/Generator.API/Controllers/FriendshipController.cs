@@ -121,7 +121,7 @@ public class FriendshipController : Controller
     [HttpGet("notifications")]
     public async Task<IActionResult> GetNotifications([FromQuery] int userId)
     {
-        var notifications = await _context.Friendships
+        var notifications = _context.Friendships
             .Where(f => f.user2_id == userId && f.IsPending)
             .Include(f => f.User1) 
             .Select(f => new
@@ -132,15 +132,14 @@ public class FriendshipController : Controller
                 RecieverName = f.User2.username,
                 RecieverId = f.user2_id
             })
-            .ToListAsync();
+            .ToList();
 
         if (!notifications.Any())
             return Ok(new List<object>());
-        if (!notifications.Any())
-            return NotFound("No notifications found.");
 
         return Ok(notifications);
     }
+
 
 
     [HttpPost("respond")]

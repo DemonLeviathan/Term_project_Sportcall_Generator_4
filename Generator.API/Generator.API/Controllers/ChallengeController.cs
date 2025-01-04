@@ -117,24 +117,26 @@ public class ChallengeController : ControllerBase
     public async Task<IActionResult> GetChallengeNotifications([FromQuery] int userId)
     {
         var notifications = await _context.Challenges
-            .Where(c => c.ReceiverId == userId && c.Status == "Pending")
-            .Include(c => c.Sender)
-            .Include(c => c.Call)
-            .Select(c => new
-            {
-                c.ChallengeId,
-                CallName = c.Call.call_name,
-                Description = c.Call.description,
-                SenderName = c.Sender.username,
-                c.SenderId,
-                c.ReceiverId,
-                c.SentAt
-            })
-            .ToListAsync();
+    .Where(c => c.ReceiverId == userId && c.Status == "Pending")
+    .Include(c => c.Sender)
+    .Include(c => c.Call) 
+    .Select(c => new
+    {
+        c.ChallengeId,
+        CallName = c.Call.call_name,
+        Description = c.Call.description,
+        SenderName = c.Sender.username,
+        c.SenderId,
+        c.ReceiverId,
+        c.SentAt
+    })
+    .ToListAsync();
 
+
+        //if (!notifications.Any())
+        //    return NotFound("Нет уведомлений о вызовах.");
         if (!notifications.Any())
-            return NotFound("Нет уведомлений о вызовах.");
-
+            return Ok(new List<object>());
 
         return Ok(notifications);
     }

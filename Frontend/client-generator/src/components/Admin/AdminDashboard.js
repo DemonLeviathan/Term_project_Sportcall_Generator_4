@@ -139,6 +139,17 @@ const AdminDashboard = () => {
     setOpenUserStats(false);
   };
 
+  const handleLogout = async () => {
+    try {
+      await api.post('account/logout'); 
+      localStorage.removeItem('currentUser'); 
+      window.location.href = '/login'; 
+    } catch (err) {
+      console.error('Ошибка выхода:', err.response?.data || err.message);
+    }
+  };
+  
+
   return (
     <Container>
       <Typography variant="h4" gutterBottom>
@@ -398,6 +409,13 @@ const AdminDashboard = () => {
           </Card>
         </Box>
       </Modal>
+
+      <Box sx={{ display: 'flex', justifyContent: 'flex-end', p: 2 }}>
+        <Button variant="contained" color="error" onClick={handleLogout}>
+          Выйти
+        </Button>
+</Box>
+
     </Container>
   );
 };

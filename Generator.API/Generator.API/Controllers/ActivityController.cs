@@ -1,9 +1,12 @@
 ﻿using Generator.API.DTO;
 using Generator.Application.Interfaces;
 using Generator.Domain;
+using Generator.Infrastructure;
 using Generator.Infrastructure.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 
 namespace Generator.API.Controllers
 {
@@ -13,10 +16,12 @@ namespace Generator.API.Controllers
     {
         private readonly IActivityService _activityService;
         private readonly IUnitOfWork _unitOfWork;
-        public ActivityController(IActivityService activityService, IUnitOfWork unitOfWork)
+        private readonly ApplicationDbContext _context;
+        public ActivityController(IActivityService activityService, IUnitOfWork unitOfWork, ApplicationDbContext _context)
         {
             _activityService = activityService;
             _unitOfWork = unitOfWork;
+            this._context = _context;
         }
 
 
@@ -168,5 +173,148 @@ namespace Generator.API.Controllers
 
             return Ok(activities);
         }
+
+        /// <summary>
+        /// Добавить запись в DailyActivity.
+        /// </summary>
+        [Authorize(Roles = "User")]
+        [HttpPost("add-daily-activity")]
+        public async Task<IActionResult> AddDailyActivity([FromBody] DailyActivityDto dailyActivityDto)
+        {
+            if (dailyActivityDto == null)
+            {
+                Console.Error.WriteLine("Ошибка: dailyActivityDto равен null.");
+                return BadRequest("Данные активности отсутствуют.");
+            }
+
+            if (dailyActivityDto.UserId <= 0)
+            {
+                Console.Error.WriteLine("Ошибка: UserId неверен.");
+                return BadRequest("Некорректный идентификатор пользователя.");
+            }
+
+            try
+            {
+                var existingActivity = await _context.DailyActivities
+        .FirstOrDefaultAsync(a => a.userId == dailyActivityDto.UserId && a.date.Date == DateTime.UtcNow.Date);
+
+                if (existingActivity != null)
+                    return Conflict("Активность для этого пользователя на сегодня уже существует.");
+
+                Console.WriteLine($"Получен запрос на добавление активности: {JsonConvert.SerializeObject(dailyActivityDto)}");
+
+                var user = await _context.Users.FirstOrDefaultAsync(u => u.user_id == dailyActivityDto.UserId);
+                if (user == null)
+                {
+                    Console.Error.WriteLine($"Ошибка: Пользователь с ID {dailyActivityDto.UserId} не найден.");
+                    return NotFound("Пользователь не найден.");
+                }
+
+                var dailyActivity = new DailyActivity
+                {
+                    stepQuantity = dailyActivityDto.StepQuantity,
+                    otherActivityTime = dailyActivityDto.OtherActivityTime.Value,
+                    userId = dailyActivityDto.UserId,
+                    date = DateTime.UtcNow,
+                    User = user
+                };
+
+                Console.WriteLine($"Создан объект активности: {JsonConvert.SerializeObject(dailyActivity)}");
+
+                _context.DailyActivities.Add(dailyActivity);
+                await _context.SaveChangesAsync();
+
+                Console.WriteLine("Активность успешно сохранена.");
+                return Ok("Активность успешно добавлена.");
+            }
+            catch (Exception ex)
+            {
+                Console.Error.WriteLine($"Ошибка в AddDailyActivity: {ex.Message}");
+                return StatusCode(500, "Произошла ошибка при добавлении активности.");
+            }
+        }
+
+
+        [Authorize(Roles = "User")]
+        [HttpGet("{id}/daily-activity")]
+        public IActionResult GetDailyActivityById(int id)
+        {
+            var dailyActivity = _context.DailyActivities
+                .Include(da => da.User) 
+                .FirstOrDefault(da => da.dailyAcivityId == id);
+
+            if (dailyActivity == null)
+            {
+                return NotFound("Активность не найдена.");
+            }
+
+            return Ok(dailyActivity);
+        }
+
+        [Authorize(Roles = "User")]
+        [HttpGet("user-daily-activities/{userId}")]
+        public async Task<IActionResult> GetUserDailyActivities(int userId)
+        {
+            var activities = await _context.DailyActivities
+                .Where(a => a.userId == userId)
+                .OrderByDescending(a => a.date)
+                .ToListAsync();
+
+            if (!activities.Any())
+                return NotFound("Данные активности не найдены.");
+
+            return Ok(activities);
+        }
+
+
+        /// <summary>
+        /// Обновить запись в DailyActivity.
+        /// </summary>
+        [Authorize(Roles = "User")]
+        [HttpPut("update-daily-activity/{id}")]
+        public async Task<IActionResult> UpdateDailyActivity(int id, [FromBody] DailyActivityDto updatedActivityDto)
+        {
+            if (updatedActivityDto == null)
+            {
+                return BadRequest("Данные активности отсутствуют.");
+            }
+
+            try
+            {
+                var existingActivity = await _context.DailyActivities
+                    .Include(da => da.User) 
+                    .FirstOrDefaultAsync(da => da.dailyAcivityId == id);
+
+                if (existingActivity == null)
+                {
+                    return NotFound("Активность не найдена.");
+                }
+
+                if (existingActivity.userId != updatedActivityDto.UserId)
+                {
+                    return BadRequest("Невозможно изменить пользователя для данной активности.");
+                }
+
+                existingActivity.stepQuantity = updatedActivityDto.StepQuantity;
+                existingActivity.otherActivityTime = updatedActivityDto.OtherActivityTime;
+                existingActivity.date = DateTime.UtcNow;
+
+                _context.DailyActivities.Update(existingActivity);
+                await _context.SaveChangesAsync();
+
+                return Ok(new
+                {
+                    Message = "Активность успешно обновлена.",
+                    Activity = existingActivity
+                });
+            }
+            catch (Exception ex)
+            {
+                Console.Error.WriteLine($"Ошибка в UpdateDailyActivity: {ex.Message}");
+                return StatusCode(500, "Произошла ошибка при обновлении активности.");
+            }
+        }
+
+
     }
 }

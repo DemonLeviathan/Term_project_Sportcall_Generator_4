@@ -123,6 +123,38 @@ namespace Generator.Infrastructure.Migrations
                     b.ToTable("Calls");
                 });
 
+            modelBuilder.Entity("Generator.Domain.DailyActivity", b =>
+                {
+                    b.Property<int>("dailyAcivityId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("dailyAcivityId"));
+
+                    b.Property<DateTime>("date")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<float?>("otherActivityTime")
+                        .HasColumnType("real");
+
+                    b.Property<int>("stepQuantity")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("userId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("user_id")
+                        .HasColumnType("integer");
+
+                    b.HasKey("dailyAcivityId");
+
+                    b.HasIndex("userId");
+
+                    b.HasIndex("user_id");
+
+                    b.ToTable("DailyActivities");
+                });
+
             modelBuilder.Entity("Generator.Domain.Friendship", b =>
                 {
                     b.Property<int>("friend_id")
@@ -288,6 +320,23 @@ namespace Generator.Infrastructure.Migrations
                     b.Navigation("Friendship");
                 });
 
+            modelBuilder.Entity("Generator.Domain.DailyActivity", b =>
+                {
+                    b.HasOne("Generator.Domain.Users", null)
+                        .WithMany("DailyActivities")
+                        .HasForeignKey("userId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Generator.Domain.Users", "User")
+                        .WithMany()
+                        .HasForeignKey("user_id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("Generator.Domain.Friendship", b =>
                 {
                     b.HasOne("Generator.Domain.Users", "User1")
@@ -358,6 +407,8 @@ namespace Generator.Infrastructure.Migrations
             modelBuilder.Entity("Generator.Domain.Users", b =>
                 {
                     b.Navigation("Calls");
+
+                    b.Navigation("DailyActivities");
 
                     b.Navigation("Friendships1");
 
