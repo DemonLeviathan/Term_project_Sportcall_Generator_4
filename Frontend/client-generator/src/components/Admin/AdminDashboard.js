@@ -143,6 +143,8 @@ const AdminDashboard = () => {
     try {
       await api.post('account/logout'); 
       localStorage.removeItem('currentUser'); 
+      localStorage.removeItem('currentUserRole'); 
+      localStorage.removeItem('token'); 
       window.location.href = '/login'; 
     } catch (err) {
       console.error('Ошибка выхода:', err.response?.data || err.message);

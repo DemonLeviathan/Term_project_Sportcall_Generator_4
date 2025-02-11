@@ -34,7 +34,6 @@ namespace Generator.API.Controllers
             var currentYear = now.Year;
             var currentMonth = now.Month;
 
-            // 1. Получаем топ-10 пользователей по количеству "completed" вызовов за всё время
             var topUsersRaw = await _context.Calls
                 .Where(c => c.status == "completed")
                 .GroupBy(c => c.user_id)
@@ -49,17 +48,14 @@ namespace Generator.API.Controllers
 
             var userIds = topUsersRaw.Select(x => x.UserId).ToList();
 
-            // Получаем имена пользователей
             var usersDict = await _context.Users
                 .Where(u => userIds.Contains(u.user_id))
                 .ToDictionaryAsync(u => u.user_id, u => u.username);
 
-            // 2. Получаем все "completed" вызовы для топ-10 пользователей
             var topUsersCompletedCalls = await _context.Calls
                 .Where(c => c.status == "completed" && userIds.Contains(c.user_id))
-                .ToListAsync(); // Извлекаем данные в память
+                .ToListAsync(); 
 
-            // 3. Группируем по (user_id, call_name) и подсчитываем количества
             var grouped = topUsersCompletedCalls
                 .GroupBy(c => new { c.user_id, c.call_name })
                 .Select(g => new
@@ -74,9 +70,8 @@ namespace Generator.API.Controllers
                         DateTime.TryParse(c.call_date, out DateTime callDate) &&
                         callDate.Year == currentYear)
                 })
-                .ToList(); // Обрабатываем в памяти
+                .ToList(); 
 
-            // 4. Формируем итоговый список топ-10 пользователей с категориями
             var topUsersFinal = topUsersRaw.Select(u => new
             {
                 username = usersDict.ContainsKey(u.UserId) ? usersDict[u.UserId] : $"User#{u.UserId}",
@@ -86,12 +81,11 @@ namespace Generator.API.Controllers
                     .Select(c => new
                     {
                         category = c.Category,
-                        completedCalls = c.YearlyCompleted // Используем YearlyCompleted как общее количество за год
+                        completedCalls = c.YearlyCompleted 
                     })
                     .ToList()
             }).ToList();
 
-            // 5. Общие показатели за месяц и год
             int totalMonthlyCompleted = topUsersCompletedCalls.Count(c =>
                 DateTime.TryParse(c.call_date, out DateTime callDate) &&
                 callDate.Year == currentYear &&
@@ -101,7 +95,6 @@ namespace Generator.API.Controllers
                 DateTime.TryParse(c.call_date, out DateTime callDate) &&
                 callDate.Year == currentYear);
 
-            // 6. Формируем итоговый объект
             var result = new
             {
                 totalMonthlyCompleted,
@@ -118,7 +111,7 @@ namespace Generator.API.Controllers
         /// 2) Количество "completed" вызовов за текущий год.
         /// </summary>
         [HttpGet("user")]
-        [AllowAnonymous] // Измените по необходимости
+        [AllowAnonymous] 
         public async Task<IActionResult> GetUserStats([FromQuery] string username)
         {
             if (string.IsNullOrEmpty(username))
@@ -126,7 +119,6 @@ namespace Generator.API.Controllers
                 return BadRequest("Имя пользователя не указано.");
             }
 
-            // Находим пользователя по username
             var user = await _context.Users.FirstOrDefaultAsync(u => u.username == username);
             if (user == null)
             {
@@ -137,12 +129,10 @@ namespace Generator.API.Controllers
             var currentYear = now.Year;
             var currentMonth = now.Month;
 
-            // Получаем все "completed" вызовы пользователя
             var userCompletedCalls = await _context.Calls
                 .Where(c => c.user_id == user.user_id && c.status == "completed")
-                .ToListAsync(); // Извлекаем данные в память
+                .ToListAsync(); 
 
-            // Подсчёт выполненных вызовов за месяц и за год
             int monthlyCompleted = userCompletedCalls.Count(c =>
                 DateTime.TryParse(c.call_date, out DateTime callDate) &&
                 callDate.Year == currentYear &&
@@ -152,7 +142,6 @@ namespace Generator.API.Controllers
                 DateTime.TryParse(c.call_date, out DateTime callDate) &&
                 callDate.Year == currentYear);
 
-            // Подсчёт выполненных вызовов по категориям за месяц и за год
             var categoriesStats = userCompletedCalls
                 .Where(c => DateTime.TryParse(c.call_date, out DateTime callDate) &&
                             callDate.Year == currentYear)

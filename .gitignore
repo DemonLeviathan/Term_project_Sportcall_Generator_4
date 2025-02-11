@@ -80,3 +80,7 @@ dist/
 # Tests
 *.csproj.user
 testResults/
+
+.docx
+.pdf
+.drawio

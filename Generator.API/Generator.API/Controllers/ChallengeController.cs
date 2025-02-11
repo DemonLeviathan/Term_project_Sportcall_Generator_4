@@ -131,10 +131,6 @@ public class ChallengeController : ControllerBase
         c.SentAt
     })
     .ToListAsync();
-
-
-        //if (!notifications.Any())
-        //    return NotFound("Нет уведомлений о вызовах.");
         if (!notifications.Any())
             return Ok(new List<object>());
 

@@ -3,36 +3,56 @@
   "WorkspaceRootPath": "D:\\Univer\\7-th term\\TermProject\\Generator.API\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{4F38A610-EE37-4376-802D-20D9D3D1F9B5}|Generator.API\\Generator.API.csproj|d:\\univer\\7-th term\\termproject\\generator.api\\generator.api\\controllers\\activitycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4F38A610-EE37-4376-802D-20D9D3D1F9B5}|Generator.API\\Generator.API.csproj|solutionrelative:generator.api\\controllers\\activitycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4F38A610-EE37-4376-802D-20D9D3D1F9B5}|Generator.API\\Generator.API.csproj|d:\\univer\\7-th term\\termproject\\generator.api\\generator.api\\controllers\\challengecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4F38A610-EE37-4376-802D-20D9D3D1F9B5}|Generator.API\\Generator.API.csproj|solutionrelative:generator.api\\controllers\\challengecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4F38A610-EE37-4376-802D-20D9D3D1F9B5}|Generator.API\\Generator.API.csproj|d:\\univer\\7-th term\\termproject\\generator.api\\generator.api\\dto\\dailyactivitydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4F38A610-EE37-4376-802D-20D9D3D1F9B5}|Generator.API\\Generator.API.csproj|solutionrelative:generator.api\\dto\\dailyactivitydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BF6FB0D0-C710-496D-9455-5A8C4A40564F}|Generator.Domain\\Generator.Domain.csproj|d:\\univer\\7-th term\\termproject\\generator.api\\generator.domain\\dailyactivity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BF6FB0D0-C710-496D-9455-5A8C4A40564F}|Generator.Domain\\Generator.Domain.csproj|solutionrelative:generator.domain\\dailyactivity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4F38A610-EE37-4376-802D-20D9D3D1F9B5}|Generator.API\\Generator.API.csproj|d:\\univer\\7-th term\\termproject\\generator.api\\generator.api\\middleware\\jwtmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4F38A610-EE37-4376-802D-20D9D3D1F9B5}|Generator.API\\Generator.API.csproj|solutionrelative:generator.api\\middleware\\jwtmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{69307E9E-1EEA-4EC1-AE9A-AAD2CE1B395E}|Generator.Infrastructure\\Generator.Infrastructure.csproj|d:\\univer\\7-th term\\termproject\\generator.api\\generator.infrastructure\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{69307E9E-1EEA-4EC1-AE9A-AAD2CE1B395E}|Generator.Infrastructure\\Generator.Infrastructure.csproj|solutionrelative:generator.infrastructure\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BF6FB0D0-C710-496D-9455-5A8C4A40564F}|Generator.Domain\\Generator.Domain.csproj|d:\\univer\\7-th term\\termproject\\generator.api\\generator.domain\\userdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BF6FB0D0-C710-496D-9455-5A8C4A40564F}|Generator.Domain\\Generator.Domain.csproj|solutionrelative:generator.domain\\userdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4F38A610-EE37-4376-802D-20D9D3D1F9B5}|Generator.API\\Generator.API.csproj|d:\\univer\\7-th term\\termproject\\generator.api\\generator.api\\controllers\\callcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4F38A610-EE37-4376-802D-20D9D3D1F9B5}|Generator.API\\Generator.API.csproj|solutionrelative:generator.api\\controllers\\callcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BF6FB0D0-C710-496D-9455-5A8C4A40564F}|Generator.Domain\\Generator.Domain.csproj|d:\\univer\\7-th term\\termproject\\generator.api\\generator.domain\\users.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BF6FB0D0-C710-496D-9455-5A8C4A40564F}|Generator.Domain\\Generator.Domain.csproj|solutionrelative:generator.domain\\users.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4F38A610-EE37-4376-802D-20D9D3D1F9B5}|Generator.API\\Generator.API.csproj|d:\\univer\\7-th term\\termproject\\generator.api\\generator.api\\controllers\\statscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4F38A610-EE37-4376-802D-20D9D3D1F9B5}|Generator.API\\Generator.API.csproj|solutionrelative:generator.api\\controllers\\statscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4F38A610-EE37-4376-802D-20D9D3D1F9B5}|Generator.API\\Generator.API.csproj|d:\\univer\\7-th term\\termproject\\generator.api\\generator.api\\controllers\\friendshipcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4F38A610-EE37-4376-802D-20D9D3D1F9B5}|Generator.API\\Generator.API.csproj|solutionrelative:generator.api\\controllers\\friendshipcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4F38A610-EE37-4376-802D-20D9D3D1F9B5}|Generator.API\\Generator.API.csproj|d:\\univer\\7-th term\\termproject\\generator.api\\generator.api\\controllers\\userdatacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4F38A610-EE37-4376-802D-20D9D3D1F9B5}|Generator.API\\Generator.API.csproj|solutionrelative:generator.api\\controllers\\userdatacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4F38A610-EE37-4376-802D-20D9D3D1F9B5}|Generator.API\\Generator.API.csproj|d:\\univer\\7-th term\\termproject\\generator.api\\generator.api\\controllers\\activitycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4F38A610-EE37-4376-802D-20D9D3D1F9B5}|Generator.API\\Generator.API.csproj|solutionrelative:generator.api\\controllers\\activitycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4F38A610-EE37-4376-802D-20D9D3D1F9B5}|Generator.API\\Generator.API.csproj|d:\\univer\\7-th term\\termproject\\generator.api\\generator.api\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4F38A610-EE37-4376-802D-20D9D3D1F9B5}|Generator.API\\Generator.API.csproj|solutionrelative:generator.api\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{BF6FB0D0-C710-496D-9455-5A8C4A40564F}|Generator.Domain\\Generator.Domain.csproj|d:\\univer\\7-th term\\termproject\\generator.api\\generator.domain\\friendship.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BF6FB0D0-C710-496D-9455-5A8C4A40564F}|Generator.Domain\\Generator.Domain.csproj|solutionrelative:generator.domain\\friendship.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BF6FB0D0-C710-496D-9455-5A8C4A40564F}|Generator.Domain\\Generator.Domain.csproj|d:\\univer\\7-th term\\termproject\\generator.api\\generator.domain\\usercall.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BF6FB0D0-C710-496D-9455-5A8C4A40564F}|Generator.Domain\\Generator.Domain.csproj|solutionrelative:generator.domain\\usercall.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BF6FB0D0-C710-496D-9455-5A8C4A40564F}|Generator.Domain\\Generator.Domain.csproj|d:\\univer\\7-th term\\termproject\\generator.api\\generator.domain\\dailyactivity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BF6FB0D0-C710-496D-9455-5A8C4A40564F}|Generator.Domain\\Generator.Domain.csproj|solutionrelative:generator.domain\\dailyactivity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF6FB0D0-C710-496D-9455-5A8C4A40564F}|Generator.Domain\\Generator.Domain.csproj|d:\\univer\\7-th term\\termproject\\generator.api\\generator.domain\\userdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BF6FB0D0-C710-496D-9455-5A8C4A40564F}|Generator.Domain\\Generator.Domain.csproj|solutionrelative:generator.domain\\userdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF6FB0D0-C710-496D-9455-5A8C4A40564F}|Generator.Domain\\Generator.Domain.csproj|d:\\univer\\7-th term\\termproject\\generator.api\\generator.domain\\activities.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BF6FB0D0-C710-496D-9455-5A8C4A40564F}|Generator.Domain\\Generator.Domain.csproj|solutionrelative:generator.domain\\activities.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{BF6FB0D0-C710-496D-9455-5A8C4A40564F}|Generator.Domain\\Generator.Domain.csproj|d:\\univer\\7-th term\\termproject\\generator.api\\generator.domain\\challenge.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -43,24 +63,20 @@
       "RelativeMoniker": "D:0:0:{BF6FB0D0-C710-496D-9455-5A8C4A40564F}|Generator.Domain\\Generator.Domain.csproj|solutionrelative:generator.domain\\calls.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4F38A610-EE37-4376-802D-20D9D3D1F9B5}|Generator.API\\Generator.API.csproj|d:\\univer\\7-th term\\termproject\\generator.api\\generator.api\\controllers\\challengecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4F38A610-EE37-4376-802D-20D9D3D1F9B5}|Generator.API\\Generator.API.csproj|solutionrelative:generator.api\\controllers\\challengecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BF6FB0D0-C710-496D-9455-5A8C4A40564F}|Generator.Domain\\Generator.Domain.csproj|d:\\univer\\7-th term\\termproject\\generator.api\\generator.domain\\users.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BF6FB0D0-C710-496D-9455-5A8C4A40564F}|Generator.Domain\\Generator.Domain.csproj|solutionrelative:generator.domain\\users.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4F38A610-EE37-4376-802D-20D9D3D1F9B5}|Generator.API\\Generator.API.csproj|d:\\univer\\7-th term\\termproject\\generator.api\\generator.api\\controllers\\friendshipcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4F38A610-EE37-4376-802D-20D9D3D1F9B5}|Generator.API\\Generator.API.csproj|solutionrelative:generator.api\\controllers\\friendshipcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BF6FB0D0-C710-496D-9455-5A8C4A40564F}|Generator.Domain\\Generator.Domain.csproj|d:\\univer\\7-th term\\termproject\\generator.api\\generator.domain\\usercall.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BF6FB0D0-C710-496D-9455-5A8C4A40564F}|Generator.Domain\\Generator.Domain.csproj|solutionrelative:generator.domain\\usercall.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4F38A610-EE37-4376-802D-20D9D3D1F9B5}|Generator.API\\Generator.API.csproj|d:\\univer\\7-th term\\termproject\\generator.api\\generator.api\\dto\\dailyactivitydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4F38A610-EE37-4376-802D-20D9D3D1F9B5}|Generator.API\\Generator.API.csproj|solutionrelative:generator.api\\dto\\dailyactivitydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C8F1FDD3-A5A2-4D5C-A0B4-B65CE81CA337}|Generator.Application\\Generator.Application.csproj|d:\\univer\\7-th term\\termproject\\generator.api\\generator.application\\services\\challengegeneratorservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C8F1FDD3-A5A2-4D5C-A0B4-B65CE81CA337}|Generator.Application\\Generator.Application.csproj|solutionrelative:generator.application\\services\\challengegeneratorservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4F38A610-EE37-4376-802D-20D9D3D1F9B5}|Generator.API\\Generator.API.csproj|d:\\univer\\7-th term\\termproject\\generator.api\\generator.api\\middleware\\jwtmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4F38A610-EE37-4376-802D-20D9D3D1F9B5}|Generator.API\\Generator.API.csproj|solutionrelative:generator.api\\middleware\\jwtmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4F38A610-EE37-4376-802D-20D9D3D1F9B5}|Generator.API\\Generator.API.csproj|d:\\univer\\7-th term\\termproject\\generator.api\\generator.api\\controllers\\callcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4F38A610-EE37-4376-802D-20D9D3D1F9B5}|Generator.API\\Generator.API.csproj|solutionrelative:generator.api\\controllers\\callcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C8F1FDD3-A5A2-4D5C-A0B4-B65CE81CA337}|Generator.Application\\Generator.Application.csproj|d:\\univer\\7-th term\\termproject\\generator.api\\generator.application\\unitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -77,14 +93,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{4F38A610-EE37-4376-802D-20D9D3D1F9B5}|Generator.API\\Generator.API.csproj|d:\\univer\\7-th term\\termproject\\generator.api\\generator.api\\dto\\userdatadto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4F38A610-EE37-4376-802D-20D9D3D1F9B5}|Generator.API\\Generator.API.csproj|solutionrelative:generator.api\\dto\\userdatadto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4F38A610-EE37-4376-802D-20D9D3D1F9B5}|Generator.API\\Generator.API.csproj|d:\\univer\\7-th term\\termproject\\generator.api\\generator.api\\controllers\\userdatacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4F38A610-EE37-4376-802D-20D9D3D1F9B5}|Generator.API\\Generator.API.csproj|solutionrelative:generator.api\\controllers\\userdatacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4F38A610-EE37-4376-802D-20D9D3D1F9B5}|Generator.API\\Generator.API.csproj|d:\\univer\\7-th term\\termproject\\generator.api\\generator.api\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4F38A610-EE37-4376-802D-20D9D3D1F9B5}|Generator.API\\Generator.API.csproj|solutionrelative:generator.api\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{4F38A610-EE37-4376-802D-20D9D3D1F9B5}|Generator.API\\Generator.API.csproj|d:\\univer\\7-th term\\termproject\\generator.api\\generator.api\\dto\\sendchallengedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -117,14 +125,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{4F38A610-EE37-4376-802D-20D9D3D1F9B5}|Generator.API\\Generator.API.csproj|d:\\univer\\7-th term\\termproject\\generator.api\\generator.api\\mappings\\activityprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4F38A610-EE37-4376-802D-20D9D3D1F9B5}|Generator.API\\Generator.API.csproj|solutionrelative:generator.api\\mappings\\activityprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4F38A610-EE37-4376-802D-20D9D3D1F9B5}|Generator.API\\Generator.API.csproj|d:\\univer\\7-th term\\termproject\\generator.api\\generator.api\\controllers\\statscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4F38A610-EE37-4376-802D-20D9D3D1F9B5}|Generator.API\\Generator.API.csproj|solutionrelative:generator.api\\controllers\\statscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BF6FB0D0-C710-496D-9455-5A8C4A40564F}|Generator.Domain\\Generator.Domain.csproj|d:\\univer\\7-th term\\termproject\\generator.api\\generator.domain\\activities.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BF6FB0D0-C710-496D-9455-5A8C4A40564F}|Generator.Domain\\Generator.Domain.csproj|solutionrelative:generator.domain\\activities.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C8F1FDD3-A5A2-4D5C-A0B4-B65CE81CA337}|Generator.Application\\Generator.Application.csproj|d:\\univer\\7-th term\\termproject\\generator.api\\generator.application\\services\\callservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -258,7 +258,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 9,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -278,20 +278,128 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "DailyActivityDto.cs",
-              "DocumentMoniker": "D:\\Univer\\7-th term\\TermProject\\Generator.API\\Generator.API\\DTO\\DailyActivityDto.cs",
-              "RelativeDocumentMoniker": "Generator.API\\DTO\\DailyActivityDto.cs",
-              "ToolTip": "D:\\Univer\\7-th term\\TermProject\\Generator.API\\Generator.API\\DTO\\DailyActivityDto.cs",
-              "RelativeToolTip": "Generator.API\\DTO\\DailyActivityDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "DocumentIndex": 4,
+              "Title": "StatsController.cs",
+              "DocumentMoniker": "D:\\Univer\\7-th term\\TermProject\\Generator.API\\Generator.API\\Controllers\\StatsController.cs",
+              "RelativeDocumentMoniker": "Generator.API\\Controllers\\StatsController.cs",
+              "ToolTip": "D:\\Univer\\7-th term\\TermProject\\Generator.API\\Generator.API\\Controllers\\StatsController.cs",
+              "RelativeToolTip": "Generator.API\\Controllers\\StatsController.cs",
+              "ViewState": "AgIAAIsAAAAAAAAAAAAwwKUAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-04T00:17:54.243Z",
+              "WhenOpened": "2025-01-02T18:23:54.16Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ChallengeController.cs",
+              "DocumentMoniker": "D:\\Univer\\7-th term\\TermProject\\Generator.API\\Generator.API\\Controllers\\ChallengeController.cs",
+              "RelativeDocumentMoniker": "Generator.API\\Controllers\\ChallengeController.cs",
+              "ToolTip": "D:\\Univer\\7-th term\\TermProject\\Generator.API\\Generator.API\\Controllers\\ChallengeController.cs",
+              "RelativeToolTip": "Generator.API\\Controllers\\ChallengeController.cs",
+              "ViewState": "AgIAACcAAAAAAAAAAAAYwE0AAABIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-02T20:35:51.223Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "CallController.cs",
+              "DocumentMoniker": "D:\\Univer\\7-th term\\TermProject\\Generator.API\\Generator.API\\Controllers\\CallController.cs",
+              "RelativeDocumentMoniker": "Generator.API\\Controllers\\CallController.cs",
+              "ToolTip": "D:\\Univer\\7-th term\\TermProject\\Generator.API\\Generator.API\\Controllers\\CallController.cs",
+              "RelativeToolTip": "Generator.API\\Controllers\\CallController.cs",
+              "ViewState": "AgIAAFIAAAAAAAAAAAAkwHIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-12T18:45:13.823Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "ApplicationDbContext.cs",
+              "DocumentMoniker": "D:\\Univer\\7-th term\\TermProject\\Generator.API\\Generator.Infrastructure\\ApplicationDbContext.cs",
+              "RelativeDocumentMoniker": "Generator.Infrastructure\\ApplicationDbContext.cs",
+              "ToolTip": "D:\\Univer\\7-th term\\TermProject\\Generator.API\\Generator.Infrastructure\\ApplicationDbContext.cs",
+              "RelativeToolTip": "Generator.Infrastructure\\ApplicationDbContext.cs",
+              "ViewState": "AgIAACoAAAAAAAAAAAAwwEgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-06T17:43:35.007Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "JwtMiddleware.cs",
+              "DocumentMoniker": "D:\\Univer\\7-th term\\TermProject\\Generator.API\\Generator.API\\Middleware\\JwtMiddleware.cs",
+              "RelativeDocumentMoniker": "Generator.API\\Middleware\\JwtMiddleware.cs",
+              "ToolTip": "D:\\Univer\\7-th term\\TermProject\\Generator.API\\Generator.API\\Middleware\\JwtMiddleware.cs",
+              "RelativeToolTip": "Generator.API\\Middleware\\JwtMiddleware.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-13T17:54:31.421Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "FriendshipController.cs",
+              "DocumentMoniker": "D:\\Univer\\7-th term\\TermProject\\Generator.API\\Generator.API\\Controllers\\FriendshipController.cs",
+              "RelativeDocumentMoniker": "Generator.API\\Controllers\\FriendshipController.cs",
+              "ToolTip": "D:\\Univer\\7-th term\\TermProject\\Generator.API\\Generator.API\\Controllers\\FriendshipController.cs",
+              "RelativeToolTip": "Generator.API\\Controllers\\FriendshipController.cs",
+              "ViewState": "AgIAAIkAAAAAAAAAAAAmwKgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-12T18:45:44.381Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "UserDataController.cs",
+              "DocumentMoniker": "D:\\Univer\\7-th term\\TermProject\\Generator.API\\Generator.API\\Controllers\\UserDataController.cs",
+              "RelativeDocumentMoniker": "Generator.API\\Controllers\\UserDataController.cs",
+              "ToolTip": "D:\\Univer\\7-th term\\TermProject\\Generator.API\\Generator.API\\Controllers\\UserDataController.cs",
+              "RelativeToolTip": "Generator.API\\Controllers\\UserDataController.cs",
+              "ViewState": "AgIAAHkAAAAAAAAAAAAkwJUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-12T18:45:58.207Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ActivityController.cs",
+              "DocumentMoniker": "D:\\Univer\\7-th term\\TermProject\\Generator.API\\Generator.API\\Controllers\\ActivityController.cs",
+              "RelativeDocumentMoniker": "Generator.API\\Controllers\\ActivityController.cs",
+              "ToolTip": "D:\\Univer\\7-th term\\TermProject\\Generator.API\\Generator.API\\Controllers\\ActivityController.cs",
+              "RelativeToolTip": "Generator.API\\Controllers\\ActivityController.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAcwCQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-12T18:19:19.086Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "AccountController.cs",
+              "DocumentMoniker": "D:\\Univer\\7-th term\\TermProject\\Generator.API\\Generator.API\\Controllers\\AccountController.cs",
+              "RelativeDocumentMoniker": "Generator.API\\Controllers\\AccountController.cs",
+              "ToolTip": "D:\\Univer\\7-th term\\TermProject\\Generator.API\\Generator.API\\Controllers\\AccountController.cs",
+              "RelativeToolTip": "Generator.API\\Controllers\\AccountController.cs",
+              "ViewState": "AgIAADIAAAAAAAAAAAAgwE8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-13T16:28:03.44Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Friendship.cs",
+              "DocumentMoniker": "D:\\Univer\\7-th term\\TermProject\\Generator.API\\Generator.Domain\\Friendship.cs",
+              "RelativeDocumentMoniker": "Generator.Domain\\Friendship.cs",
+              "ToolTip": "D:\\Univer\\7-th term\\TermProject\\Generator.API\\Generator.Domain\\Friendship.cs",
+              "RelativeToolTip": "Generator.Domain\\Friendship.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAA3wAoAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-10T19:17:58.175Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
               "Title": "DailyActivity.cs",
               "DocumentMoniker": "D:\\Univer\\7-th term\\TermProject\\Generator.API\\Generator.Domain\\DailyActivity.cs",
               "RelativeDocumentMoniker": "Generator.Domain\\DailyActivity.cs",
@@ -299,90 +407,35 @@
               "RelativeToolTip": "Generator.Domain\\DailyActivity.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAuwBAAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-03T23:27:21.116Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-03T23:27:21.116Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 11,
               "Title": "UserData.cs",
               "DocumentMoniker": "D:\\Univer\\7-th term\\TermProject\\Generator.API\\Generator.Domain\\UserData.cs",
               "RelativeDocumentMoniker": "Generator.Domain\\UserData.cs",
               "ToolTip": "D:\\Univer\\7-th term\\TermProject\\Generator.API\\Generator.Domain\\UserData.cs",
               "RelativeToolTip": "Generator.Domain\\UserData.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-10T19:15:22.749Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-10T19:15:22.749Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Users.cs",
-              "DocumentMoniker": "D:\\Univer\\7-th term\\TermProject\\Generator.API\\Generator.Domain\\Users.cs",
-              "RelativeDocumentMoniker": "Generator.Domain\\Users.cs",
-              "ToolTip": "D:\\Univer\\7-th term\\TermProject\\Generator.API\\Generator.Domain\\Users.cs",
-              "RelativeToolTip": "Generator.Domain\\Users.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 12,
+              "Title": "Activities.cs",
+              "DocumentMoniker": "D:\\Univer\\7-th term\\TermProject\\Generator.API\\Generator.Domain\\Activities.cs",
+              "RelativeDocumentMoniker": "Generator.Domain\\Activities.cs",
+              "ToolTip": "D:\\Univer\\7-th term\\TermProject\\Generator.API\\Generator.Domain\\Activities.cs",
+              "RelativeToolTip": "Generator.Domain\\Activities.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-06T17:41:36.841Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-10T19:14:07.409Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "ApplicationDbContext.cs",
-              "DocumentMoniker": "D:\\Univer\\7-th term\\TermProject\\Generator.API\\Generator.Infrastructure\\ApplicationDbContext.cs",
-              "RelativeDocumentMoniker": "Generator.Infrastructure\\ApplicationDbContext.cs",
-              "ToolTip": "D:\\Univer\\7-th term\\TermProject\\Generator.API\\Generator.Infrastructure\\ApplicationDbContext.cs",
-              "RelativeToolTip": "Generator.Infrastructure\\ApplicationDbContext.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAUwAwAAAAfAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-06T17:43:35.007Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ActivityController.cs",
-              "DocumentMoniker": "D:\\Univer\\7-th term\\TermProject\\Generator.API\\Generator.API\\Controllers\\ActivityController.cs",
-              "RelativeDocumentMoniker": "Generator.API\\Controllers\\ActivityController.cs",
-              "ToolTip": "D:\\Univer\\7-th term\\TermProject\\Generator.API\\Generator.API\\Controllers\\ActivityController.cs*",
-              "RelativeToolTip": "Generator.API\\Controllers\\ActivityController.cs*",
-              "ViewState": "AgIAAK8AAAAAAAAAAAAowMoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-12T18:19:19.086Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Friendship.cs",
-              "DocumentMoniker": "D:\\Univer\\7-th term\\TermProject\\Generator.API\\Generator.Domain\\Friendship.cs",
-              "RelativeDocumentMoniker": "Generator.Domain\\Friendship.cs",
-              "ToolTip": "D:\\Univer\\7-th term\\TermProject\\Generator.API\\Generator.Domain\\Friendship.cs",
-              "RelativeToolTip": "Generator.Domain\\Friendship.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-10T19:17:58.175Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "UserCall.cs",
-              "DocumentMoniker": "D:\\Univer\\7-th term\\TermProject\\Generator.API\\Generator.Domain\\UserCall.cs",
-              "RelativeDocumentMoniker": "Generator.Domain\\UserCall.cs",
-              "ToolTip": "D:\\Univer\\7-th term\\TermProject\\Generator.API\\Generator.Domain\\UserCall.cs",
-              "RelativeToolTip": "Generator.Domain\\UserCall.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAATAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-02T20:34:08.603Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 13,
               "Title": "Challenge.cs",
               "DocumentMoniker": "D:\\Univer\\7-th term\\TermProject\\Generator.API\\Generator.Domain\\Challenge.cs",
               "RelativeDocumentMoniker": "Generator.Domain\\Challenge.cs",
@@ -390,51 +443,59 @@
               "RelativeToolTip": "Generator.Domain\\Challenge.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-02T20:32:38.295Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-02T20:32:38.295Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 14,
               "Title": "Calls.cs",
               "DocumentMoniker": "D:\\Univer\\7-th term\\TermProject\\Generator.API\\Generator.Domain\\Calls.cs",
               "RelativeDocumentMoniker": "Generator.Domain\\Calls.cs",
               "ToolTip": "D:\\Univer\\7-th term\\TermProject\\Generator.API\\Generator.Domain\\Calls.cs",
               "RelativeToolTip": "Generator.Domain\\Calls.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAuwA0AAAAZAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwBEAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-12T17:07:42.091Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-12T17:07:42.091Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "ChallengeController.cs",
-              "DocumentMoniker": "D:\\Univer\\7-th term\\TermProject\\Generator.API\\Generator.API\\Controllers\\ChallengeController.cs",
-              "RelativeDocumentMoniker": "Generator.API\\Controllers\\ChallengeController.cs",
-              "ToolTip": "D:\\Univer\\7-th term\\TermProject\\Generator.API\\Generator.API\\Controllers\\ChallengeController.cs",
-              "RelativeToolTip": "Generator.API\\Controllers\\ChallengeController.cs",
-              "ViewState": "AgIAABIAAAAAAAAAAAAiwHgAAAAbAAAAAAAAAA==",
+              "DocumentIndex": 15,
+              "Title": "Users.cs",
+              "DocumentMoniker": "D:\\Univer\\7-th term\\TermProject\\Generator.API\\Generator.Domain\\Users.cs",
+              "RelativeDocumentMoniker": "Generator.Domain\\Users.cs",
+              "ToolTip": "D:\\Univer\\7-th term\\TermProject\\Generator.API\\Generator.Domain\\Users.cs",
+              "RelativeToolTip": "Generator.Domain\\Users.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-02T20:35:51.223Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-06T17:41:36.841Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "FriendshipController.cs",
-              "DocumentMoniker": "D:\\Univer\\7-th term\\TermProject\\Generator.API\\Generator.API\\Controllers\\FriendshipController.cs",
-              "RelativeDocumentMoniker": "Generator.API\\Controllers\\FriendshipController.cs",
-              "ToolTip": "D:\\Univer\\7-th term\\TermProject\\Generator.API\\Generator.API\\Controllers\\FriendshipController.cs",
-              "RelativeToolTip": "Generator.API\\Controllers\\FriendshipController.cs",
-              "ViewState": "AgIAAIkAAAAAAAAAAAAmwIkAAAAqAAAAAAAAAA==",
+              "DocumentIndex": 16,
+              "Title": "UserCall.cs",
+              "DocumentMoniker": "D:\\Univer\\7-th term\\TermProject\\Generator.API\\Generator.Domain\\UserCall.cs",
+              "RelativeDocumentMoniker": "Generator.Domain\\UserCall.cs",
+              "ToolTip": "D:\\Univer\\7-th term\\TermProject\\Generator.API\\Generator.Domain\\UserCall.cs",
+              "RelativeToolTip": "Generator.Domain\\UserCall.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-12T18:45:44.381Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-02T20:34:08.603Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 17,
+              "Title": "DailyActivityDto.cs",
+              "DocumentMoniker": "D:\\Univer\\7-th term\\TermProject\\Generator.API\\Generator.API\\DTO\\DailyActivityDto.cs",
+              "RelativeDocumentMoniker": "Generator.API\\DTO\\DailyActivityDto.cs",
+              "ToolTip": "D:\\Univer\\7-th term\\TermProject\\Generator.API\\Generator.API\\DTO\\DailyActivityDto.cs",
+              "RelativeToolTip": "Generator.API\\DTO\\DailyActivityDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-04T00:17:54.243Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
               "Title": "ChallengeGeneratorService.cs",
               "DocumentMoniker": "D:\\Univer\\7-th term\\TermProject\\Generator.API\\Generator.Application\\Services\\ChallengeGeneratorService.cs",
               "RelativeDocumentMoniker": "Generator.Application\\Services\\ChallengeGeneratorService.cs",
@@ -442,12 +503,11 @@
               "RelativeToolTip": "Generator.Application\\Services\\ChallengeGeneratorService.cs",
               "ViewState": "AgIAADIAAAAAAAAAAAAgwFcAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-15T21:08:09.726Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-15T21:08:09.726Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 21,
               "Title": "IFriendshipService.cs",
               "DocumentMoniker": "D:\\Univer\\7-th term\\TermProject\\Generator.API\\Generator.Application\\Interfaces\\IFriendshipService.cs",
               "RelativeDocumentMoniker": "Generator.Application\\Interfaces\\IFriendshipService.cs",
@@ -459,33 +519,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "CallController.cs",
-              "DocumentMoniker": "D:\\Univer\\7-th term\\TermProject\\Generator.API\\Generator.API\\Controllers\\CallController.cs",
-              "RelativeDocumentMoniker": "Generator.API\\Controllers\\CallController.cs",
-              "ToolTip": "D:\\Univer\\7-th term\\TermProject\\Generator.API\\Generator.API\\Controllers\\CallController.cs",
-              "RelativeToolTip": "Generator.API\\Controllers\\CallController.cs",
-              "ViewState": "AgIAAG4AAAAAAAAAAAAmwHoAAAAEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-12T18:45:13.823Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "JwtMiddleware.cs",
-              "DocumentMoniker": "D:\\Univer\\7-th term\\TermProject\\Generator.API\\Generator.API\\Middleware\\JwtMiddleware.cs",
-              "RelativeDocumentMoniker": "Generator.API\\Middleware\\JwtMiddleware.cs",
-              "ToolTip": "D:\\Univer\\7-th term\\TermProject\\Generator.API\\Generator.API\\Middleware\\JwtMiddleware.cs",
-              "RelativeToolTip": "Generator.API\\Middleware\\JwtMiddleware.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAcwBMAAAAEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-13T17:54:31.421Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 20,
               "Title": "IChallengeGeneratorService.cs",
               "DocumentMoniker": "D:\\Univer\\7-th term\\TermProject\\Generator.API\\Generator.Application\\Interfaces\\IChallengeGeneratorService.cs",
               "RelativeDocumentMoniker": "Generator.Application\\Interfaces\\IChallengeGeneratorService.cs",
@@ -497,7 +531,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 22,
               "Title": "UserDataDto.cs",
               "DocumentMoniker": "D:\\Univer\\7-th term\\TermProject\\Generator.API\\Generator.API\\DTO\\UserDataDto.cs",
               "RelativeDocumentMoniker": "Generator.API\\DTO\\UserDataDto.cs",
@@ -509,7 +543,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 19,
               "Title": "UnitOfWork.cs",
               "DocumentMoniker": "D:\\Univer\\7-th term\\TermProject\\Generator.API\\Generator.Application\\UnitOfWork.cs",
               "RelativeDocumentMoniker": "Generator.Application\\UnitOfWork.cs",
@@ -521,32 +555,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "AccountController.cs",
-              "DocumentMoniker": "D:\\Univer\\7-th term\\TermProject\\Generator.API\\Generator.API\\Controllers\\AccountController.cs",
-              "RelativeDocumentMoniker": "Generator.API\\Controllers\\AccountController.cs",
-              "ToolTip": "D:\\Univer\\7-th term\\TermProject\\Generator.API\\Generator.API\\Controllers\\AccountController.cs",
-              "RelativeToolTip": "Generator.API\\Controllers\\AccountController.cs",
-              "ViewState": "AgIAABgAAAAAAAAAAADwvygAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-13T16:28:03.44Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "UserDataController.cs",
-              "DocumentMoniker": "D:\\Univer\\7-th term\\TermProject\\Generator.API\\Generator.API\\Controllers\\UserDataController.cs",
-              "RelativeDocumentMoniker": "Generator.API\\Controllers\\UserDataController.cs",
-              "ToolTip": "D:\\Univer\\7-th term\\TermProject\\Generator.API\\Generator.API\\Controllers\\UserDataController.cs",
-              "RelativeToolTip": "Generator.API\\Controllers\\UserDataController.cs",
-              "ViewState": "AgIAAIcAAAAAAAAAAAAmwJsAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-12T18:45:58.207Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 23,
               "Title": "SendChallengeDto.cs",
               "DocumentMoniker": "D:\\Univer\\7-th term\\TermProject\\Generator.API\\Generator.API\\DTO\\SendChallengeDto.cs",
               "RelativeDocumentMoniker": "Generator.API\\DTO\\SendChallengeDto.cs",
@@ -558,7 +567,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 24,
               "Title": "RespondChallengeDto.cs",
               "DocumentMoniker": "D:\\Univer\\7-th term\\TermProject\\Generator.API\\Generator.API\\DTO\\RespondChallengeDto.cs",
               "RelativeDocumentMoniker": "Generator.API\\DTO\\RespondChallengeDto.cs",
@@ -570,7 +579,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 25,
               "Title": "CallsDto.cs",
               "DocumentMoniker": "D:\\Univer\\7-th term\\TermProject\\Generator.API\\Generator.API\\DTO\\CallsDto.cs",
               "RelativeDocumentMoniker": "Generator.API\\DTO\\CallsDto.cs",
@@ -582,7 +591,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 29,
               "Title": "UserDataProfile.cs",
               "DocumentMoniker": "D:\\Univer\\7-th term\\TermProject\\Generator.API\\Generator.API\\Mappings\\UserDataProfile.cs",
               "RelativeDocumentMoniker": "Generator.API\\Mappings\\UserDataProfile.cs",
@@ -594,7 +603,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 28,
               "Title": "FriendshipProfile.cs",
               "DocumentMoniker": "D:\\Univer\\7-th term\\TermProject\\Generator.API\\Generator.API\\Mappings\\FriendshipProfile.cs",
               "RelativeDocumentMoniker": "Generator.API\\Mappings\\FriendshipProfile.cs",
@@ -606,19 +615,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 26,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\Univer\\7-th term\\TermProject\\Generator.API\\Generator.API\\Program.cs",
               "RelativeDocumentMoniker": "Generator.API\\Program.cs",
               "ToolTip": "D:\\Univer\\7-th term\\TermProject\\Generator.API\\Generator.API\\Program.cs",
               "RelativeToolTip": "Generator.API\\Program.cs",
-              "ViewState": "AgIAABIAAAAAAAAAAAAAAFEAAAAoAAAAAAAAAA==",
+              "ViewState": "AgIAAA8AAAAAAAAAAIBJwFEAAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-12T17:56:41.717Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 27,
               "Title": "CallProfile.cs",
               "DocumentMoniker": "D:\\Univer\\7-th term\\TermProject\\Generator.API\\Generator.API\\Mappings\\CallProfile.cs",
               "RelativeDocumentMoniker": "Generator.API\\Mappings\\CallProfile.cs",
@@ -630,7 +639,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 30,
               "Title": "ActivityProfile.cs",
               "DocumentMoniker": "D:\\Univer\\7-th term\\TermProject\\Generator.API\\Generator.API\\Mappings\\ActivityProfile.cs",
               "RelativeDocumentMoniker": "Generator.API\\Mappings\\ActivityProfile.cs",
@@ -639,30 +648,6 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-12T18:22:03.156Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 29,
-              "Title": "StatsController.cs",
-              "DocumentMoniker": "D:\\Univer\\7-th term\\TermProject\\Generator.API\\Generator.API\\Controllers\\StatsController.cs",
-              "RelativeDocumentMoniker": "Generator.API\\Controllers\\StatsController.cs",
-              "ToolTip": "D:\\Univer\\7-th term\\TermProject\\Generator.API\\Generator.API\\Controllers\\StatsController.cs",
-              "RelativeToolTip": "Generator.API\\Controllers\\StatsController.cs",
-              "ViewState": "AgIAAIgAAAAAAAAAAAAwwJ8AAAAgAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-02T18:23:54.16Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 30,
-              "Title": "Activities.cs",
-              "DocumentMoniker": "D:\\Univer\\7-th term\\TermProject\\Generator.API\\Generator.Domain\\Activities.cs",
-              "RelativeDocumentMoniker": "Generator.Domain\\Activities.cs",
-              "ToolTip": "D:\\Univer\\7-th term\\TermProject\\Generator.API\\Generator.Domain\\Activities.cs",
-              "RelativeToolTip": "Generator.Domain\\Activities.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-10T19:14:07.409Z"
             },
             {
               "$type": "Document",
