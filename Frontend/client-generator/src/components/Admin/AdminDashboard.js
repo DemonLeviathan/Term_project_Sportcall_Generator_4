@@ -17,7 +17,14 @@ import {
   Modal,
   Card,
   CardContent,
+  IconButton,
+  Snackbar, 
+  Dialog, 
+  DialogTitle,
+   DialogContent,
+    DialogActions,
 } from '@mui/material';
+import DeleteIcon from "@mui/icons-material/Delete";
 import api from '../../services/api';
 
 const AdminDashboard = () => {
@@ -30,6 +37,11 @@ const AdminDashboard = () => {
   const [userTotalPages, setUserTotalPages] = useState(1);
   const [activityTotalPages, setActivityTotalPages] = useState(1);
   const [error, setError] = useState('');
+  const [openSnackbar, setOpenSnackbar] = useState(false);
+  const [snackbarMessage, setSnackbarMessage] = useState("");
+  const [snackbarSeverity, setSnackbarSeverity] = useState("success");
+  const [openDialog, setOpenDialog] = useState(false);
+  const [selectedId, setSelectedId] = useState(null);
 
   // === Глобальная статистика (по всем пользователям) ===
   const [globalStats, setGlobalStats] = useState({
@@ -50,7 +62,7 @@ const AdminDashboard = () => {
   useEffect(() => {
     fetchUsers();
     fetchActivities();
-    fetchGlobalStats(); // Подгружаем глобальную статистику при загрузке
+    fetchGlobalStats();
   }, [userPage, activityPage]);
 
   // =======================
@@ -105,7 +117,6 @@ const AdminDashboard = () => {
   const fetchGlobalStats = async () => {
     try {
       const response = await api.get('/stats/admin');
-      // Ожидаем поля: totalMonthlyCompleted, totalYearlyCompleted, topUsers
       setGlobalStats(response.data);
     } catch (err) {
       console.error('Ошибка загрузки глобальной статистики:', err);
@@ -121,14 +132,13 @@ const AdminDashboard = () => {
       const response = await api.get('/stats/user', {
         params: { username },
       });
-      // Предположим ответ: { monthlyCompleted, yearlyCompleted, categoriesStats }
       setUserStats({
         username,
         monthlyCompleted: response.data.monthlyCompleted,
         yearlyCompleted: response.data.yearlyCompleted,
         categoriesStats: response.data.categoriesStats || [],
       });
-      setOpenUserStats(true); // Открываем модальное окно
+      setOpenUserStats(true); 
     } catch (err) {
       console.error(`Ошибка загрузки статистики пользователя ${username}:`, err);
       setError('Не удалось загрузить статистику пользователя.');
@@ -150,12 +160,37 @@ const AdminDashboard = () => {
       console.error('Ошибка выхода:', err.response?.data || err.message);
     }
   };
+
+  const handleDeleteConfirm = async () => {
+    try {
+      const response = await api.delete(`/activity/${selectedId}`, {
+        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+      });      
+  
+      if (response.status === 200 || response.status === 204) {
+        setActivities((prev) => prev.filter((a) => a.activity_id !== selectedId));
+        setSnackbarMessage("Активность удалена успешно");
+        setSnackbarSeverity("success");
+      } else {
+        setSnackbarMessage("Ошибка при удалении активности");
+        setSnackbarSeverity("error");
+      }
+    } catch (error) {
+      console.error("Ошибка:", error);
+      setSnackbarMessage("Ошибка сети при удалении активности");
+      setSnackbarSeverity("error");
+    }
+    setOpenSnackbar(true);
+    setOpenDialog(false);
+  };
+  
+  
   
 
   return (
     <Container>
       <Typography variant="h4" gutterBottom>
-        Admin Panel
+        Страница администратора
       </Typography>
 
       {error && (
@@ -265,6 +300,62 @@ const AdminDashboard = () => {
         </Button>
       </Box>
 
+    {/* =======================
+          Список активностей
+      ======================= */}
+      <Box>
+        <Typography variant="h6">Список активностей</Typography>
+        <TableContainer component={Paper} sx={{ mt: 2 }}>
+            <Table>
+                <TableHead>
+                    <TableRow>
+                        <TableCell>Название активности</TableCell>
+                        <TableCell>Тип активности</TableCell>
+                        <TableCell> </TableCell>
+                    </TableRow>
+                </TableHead>
+                <TableBody>
+                    {activities.map((activity) => (
+                        <TableRow key={activity.activity_id}>
+                            <TableCell>{activity.activity_name}</TableCell>
+                            <TableCell>{activity.activity_type}</TableCell>
+                            <TableCell>
+                                <IconButton
+                                    color="error"
+                                    onClick={() => {
+                                        setSelectedId(activity.activity_id);
+                                        setOpenDialog(true);
+                                    }}
+                                >
+                                    <DeleteIcon />
+                                </IconButton>
+                            </TableCell>
+                        </TableRow>
+                    ))}
+                </TableBody>
+            </Table>
+        </TableContainer>
+        <Pagination count={activityTotalPages} page={activityPage} onChange={(e, value) => setActivityPage(value)} sx={{ mt: 2 }} />
+
+        {/* Диалоговое окно подтверждения */}
+        <Dialog open={openDialog} onClose={() => setOpenDialog(false)}>
+            <DialogTitle>Удалить активность?</DialogTitle>
+            <DialogContent>Вы уверены, что хотите удалить эту активность?</DialogContent>
+            <DialogActions>
+                <Button onClick={() => setOpenDialog(false)} color="primary">Отмена</Button>
+                <Button onClick={handleDeleteConfirm} color="error">Удалить</Button>
+            </DialogActions>
+        </Dialog>
+
+        {/* Уведомления */}
+        <Snackbar open={openSnackbar} autoHideDuration={3000} onClose={() => setOpenSnackbar(false)}>
+            <Alert onClose={() => setOpenSnackbar(false)} severity={snackbarSeverity} sx={{ width: "100%" }}>
+                {snackbarMessage}
+            </Alert>
+        </Snackbar>
+    </Box>
+
+
       {/* =======================
           Список пользователей
       ======================= */}
@@ -313,36 +404,6 @@ const AdminDashboard = () => {
         />
       </Box>
 
-      {/* =======================
-          Список активностей
-      ======================= */}
-      <Box>
-        <Typography variant="h6">Список активностей</Typography>
-        <TableContainer component={Paper} sx={{ mt: 2 }}>
-          <Table>
-            <TableHead>
-              <TableRow>
-                <TableCell>Название активности</TableCell>
-                <TableCell>Тип активности</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {activities.map((activity) => (
-                <TableRow key={activity.activity_id}>
-                  <TableCell>{activity.activity_name}</TableCell>
-                  <TableCell>{activity.activity_type}</TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
-        <Pagination
-          count={activityTotalPages}
-          page={activityPage}
-          onChange={(e, value) => setActivityPage(value)}
-          sx={{ mt: 2 }}
-        />
-      </Box>
 
       {/* =======================
           Модальное окно: статистика конкретного пользователя

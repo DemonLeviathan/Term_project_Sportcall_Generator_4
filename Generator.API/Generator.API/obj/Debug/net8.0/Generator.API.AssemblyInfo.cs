@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Generator.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+05a6aa6b75f4612ddfeb8263baa33dfbee0efe9f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4bf3162297d60e1397c68fb8192fc283fdb5ab0a")]
 [assembly: System.Reflection.AssemblyProductAttribute("Generator.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Generator.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

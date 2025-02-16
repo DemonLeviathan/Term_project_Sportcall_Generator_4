@@ -129,7 +129,7 @@ public class CallController : Controller
             return NotFound("Пользователь не найден.");
 
         var userCalls = await _context.Calls
-            .Where(c => c.user_id == user.user_id)
+            .Where(c => c.user_id == user.user_id && c.status != "rejected")
             .ToListAsync();
 
         if (!userCalls.Any())

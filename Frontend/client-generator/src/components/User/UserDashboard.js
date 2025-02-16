@@ -683,7 +683,7 @@ const UserDashboard = () => {
         </TableContainer>
       </Box>
 
-      {/* Список друзей с кнопкой "Бросить вызов" */}
+      {/* Список друзей */}
       <Box sx={{ mb: 4 }}>
         <Typography variant="h6">Ваши друзья</Typography>
         {friends.length === 0 ? (
@@ -696,7 +696,6 @@ const UserDashboard = () => {
               <TableHead>
                 <TableRow>
                   <TableCell>Имя пользователя</TableCell>
-                  <TableCell align="right">Действия</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
